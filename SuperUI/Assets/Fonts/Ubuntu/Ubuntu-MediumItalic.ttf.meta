@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: e6f5a141083334e699877144fd2bb3bf
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Ubuntu Medium
+  fontNames:
+  - Ubuntu Medium
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c49737a1bbd1c42be9d25bc316135912, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

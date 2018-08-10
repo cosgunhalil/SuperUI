@@ -46,7 +46,7 @@ public class LB_EnumCreator : EditorWindow{
         window = (LB_EnumCreator)EditorWindow.GetWindow(typeof(LB_EnumCreator)); //create a window
         GUIContent title = new GUIContent
         {
-            text = "Enum Creator Tool"
+            text = "EnumCreator"
         };
         window.titleContent = title;
     }

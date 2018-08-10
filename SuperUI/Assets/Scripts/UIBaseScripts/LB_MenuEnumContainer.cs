@@ -1,9 +1,9 @@
 public enum PanelType
 {
     main,
+    commons,
     characters,
-    settings,
     market,
-    social,
-    searchingOpponents
+    searching,
+    settings
 }
