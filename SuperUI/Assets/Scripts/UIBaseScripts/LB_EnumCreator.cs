@@ -8,8 +8,11 @@ using System.IO;
 public class LB_EnumCreator : EditorWindow{
 
     public static LB_EnumCreator window;
+
+
     private Rect EnumsWindowRect = new Rect(100,100,200,200);
 
+    private const string enumContainerPath = "/Scripts/UIBaseScripts/LB_MenuEnumContainer.cs";//todo improve - must be dynamic
     private List<string> enums;
     private Vector2 scrollPosition;
 
@@ -63,7 +66,8 @@ public class LB_EnumCreator : EditorWindow{
 
     private void DoEnumsWindow(int id)
     {
-
+        
+        GUILayout.Label("Enum to add");
         currentEnumStringToAdd = GUILayout.TextField(currentEnumStringToAdd);
         if (GUILayout.Button("Add Enum"))
         {
@@ -85,35 +89,79 @@ public class LB_EnumCreator : EditorWindow{
             }
         }
 
+        //todo improve current user interface
         for (int i = 0; i < enums.Count; i++)
         {
+            GUILayout.BeginHorizontal();
             GUILayout.TextField(enums[i]);
+
+            if (i > 0)
+            {
+                if (GUILayout.Button("Up", GUILayout.Width(60)))
+                {
+                    MoveUpEnum(i);
+                }
+            }
+
+            if (i < enums.Count - 1)
+            {
+                if (GUILayout.Button("Down", GUILayout.Width(60)))
+                {
+                    MoveDownEnum(i);
+                }
+            }
+
+            if (GUILayout.Button("Delete", GUILayout.Width(60)))
+            {
+                DeleteEnum(i);
+            }
+            GUILayout.EndHorizontal();
         }
 
         if (GUILayout.Button("Save Enums"))
         {
-            //todo save enum file
-            var saveLocation = Application.dataPath + "/Scripts/UIBaseScripts/LB_MenuEnumContainer.cs";
-            CreateEnum(saveLocation);
+            var saveLocation = Application.dataPath + enumContainerPath;
+            CreateEnumContainerScript(saveLocation);
         }
 
         GUI.DragWindow();
     }
 
-    public void CreateEnum(string saveLocation)
+    private void MoveUpEnum(int i)
     {
-        string classDefinition = string.Empty;
-        classDefinition += "public enum PanelType" + Environment.NewLine;
+        var temp = enums[i - 1];
+        enums[i - 1] = enums[i];
+        enums[i] = temp;
+    }
 
-        classDefinition += "{" + Environment.NewLine;
+    private void MoveDownEnum(int i)
+    {
+        var temp = enums[i + 1];
+        enums[i + 1] = enums[i];
+        enums[i] = temp;
+    }
 
-        for (int i = 0; i < enums.Count; i++)
+    private void DeleteEnum(int i)
+    {
+        enums.RemoveAt(i);
+    }
+
+    public void CreateEnumContainerScript(string saveLocation)
+    {
+        string classContent = string.Empty;
+        classContent += "public enum PanelType" + Environment.NewLine;
+
+        classContent += "{" + Environment.NewLine;
+
+        for (int i = 0; i < enums.Count - 1; i++)
         {
-            classDefinition += "  " + enums[i] + "," + Environment.NewLine;
+            classContent += "    " + enums[i] + "," + Environment.NewLine;
         }
 
-        classDefinition += "}" + Environment.NewLine;
+        classContent += "    " + enums[enums.Count - 1] + Environment.NewLine;
+        classContent += "}" + Environment.NewLine;
 
-        File.WriteAllText(saveLocation, classDefinition);
+        File.WriteAllText(saveLocation, classContent);
+        AssetDatabase.Refresh();
     }
 }
