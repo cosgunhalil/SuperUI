@@ -5,7 +5,7 @@
       <File FileName="Assets/Scripts/UIBaseScripts/LB_UIManager.cs" Line="15" Column="33" />
       <File FileName="Assets/Scripts/UIBaseScripts/LB_MenuEnumContainer.cs" Line="4" Column="5" />
       <File FileName="Assets/Scripts/UIBaseScripts/LB_UIEventArgs.cs" Line="13" Column="36" />
-      <File FileName="Assets/Scripts/UIBaseScripts/LB_EnumCreator.cs" Line="88" Column="6" />
+      <File FileName="Assets/Scripts/UIBaseScripts/LB_EnumCreator.cs" Line="81" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

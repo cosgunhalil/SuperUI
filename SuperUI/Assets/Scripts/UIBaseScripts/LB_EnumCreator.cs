@@ -20,10 +20,21 @@ public class LB_EnumCreator : EditorWindow{
         if (window == null)
         {
             CreateWindow();
-            enums = new List<string>();//todo get created enums
+            enums = GetEnumStrings();
         }
 
         EnumsWindowRect.position = new Vector2(6,6); //todo  think how can we place better way
+    }
+
+    private List<string> GetEnumStrings()
+    {
+        var currentEnums = new List<string>();
+        foreach (var enumString in Enum.GetNames(typeof(PanelType)))
+        {
+            currentEnums.Add(enumString);
+        }
+
+        return currentEnums;
     }
 
     [MenuItem("Tools/EnumCreator")]
@@ -82,8 +93,27 @@ public class LB_EnumCreator : EditorWindow{
         if (GUILayout.Button("Save Enums"))
         {
             //todo save enum file
+            var saveLocation = Application.dataPath + "/Scripts/UIBaseScripts/LB_MenuEnumContainer.cs";
+            CreateEnum(saveLocation);
         }
 
         GUI.DragWindow();
+    }
+
+    public void CreateEnum(string saveLocation)
+    {
+        string classDefinition = string.Empty;
+        classDefinition += "public enum PanelType" + Environment.NewLine;
+
+        classDefinition += "{" + Environment.NewLine;
+
+        for (int i = 0; i < enums.Count; i++)
+        {
+            classDefinition += "  " + enums[i] + "," + Environment.NewLine;
+        }
+
+        classDefinition += "}" + Environment.NewLine;
+
+        File.WriteAllText(saveLocation, classDefinition);
     }
 }
