@@ -53,7 +53,7 @@ public class LB_UIPanel : MonoBehaviour {
     {
         for (int i = 0; i < UIElements.Length; i++)
         {
-            UIElements[i].PlayActivateAnimation();
+            UIElements[i].PlayActivateAnimation(AnimationTime);
         }
     }
 

@@ -14,22 +14,12 @@ public class LB_UIElement : MonoBehaviour {
         UIElementRectTransform = GetComponent<RectTransform>();
     }
 
-    public virtual void PlayActivateAnimation()
-    {
-
-    }
-
-    public virtual void PlayActivateAnimation(float delay)
+    public virtual void PlayActivateAnimation(float animationTime)
     {
 
     }
 
     public virtual void PlayDeactivateAnimation()
-    {
-
-    }
-
-    public virtual void PlayDeactivateAnimation(float delay)
     {
 
     }
