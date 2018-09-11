@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{2071EB85-D389-343D-707F-19405D9A56CB}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/uGUITools.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIBaseScripts/LB_UIPanel.cs">
     <Files>
-      <File FileName="Assets/Scripts/UIBaseScripts/LB_UIManager.cs" Line="63" Column="6" />
+      <File FileName="Assets/Scripts/UIBaseScripts/LB_UIManager.cs" Line="42" Column="38" />
       <File FileName="Assets/Scripts/UIBaseScripts/LB_MenuEnumContainer.cs" Line="4" Column="13" />
       <File FileName="Assets/Scripts/UIBaseScripts/LB_UIEventArgs.cs" Line="13" Column="36" />
       <File FileName="Assets/Scripts/UIBaseScripts/LB_EnumCreator.cs" Line="57" Column="136" />
-      <File FileName="Assets/uGUITools.cs" Line="9" Column="3" />
+      <File FileName="Assets/Scripts/UIBaseScripts/LB_UIPanel.cs" Line="16" Column="9" />
+      <File FileName="Assets/Scripts/UIBaseScripts/LB_UIElement.cs" Line="9" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
