@@ -1,0 +1,4 @@
+public class <-className-> : LB_UIManager 
+{
+		
+}

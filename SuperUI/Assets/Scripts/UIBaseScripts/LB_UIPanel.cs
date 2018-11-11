@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class LB_UIPanel : MonoBehaviour {
 
-    public LB_UIElement[] UIElements;
+    public LB_UIObject[] UIObjects;
 
-    protected Canvas PanelCanvas;
-    protected RectTransform PanelRectTransform;
+    protected PanelType panelType;
+    protected Canvas panelCanvas;
+    protected RectTransform panelRectTransform;
 
-    protected float AnimationTime;
+    protected float animationTime;
 
     public virtual void Init()
     {
-        AnimationTime = .5f;
-        PanelCanvas = GetComponent<Canvas>();
-        PanelRectTransform = GetComponent<RectTransform>();
+        animationTime = .5f;
+        panelCanvas = GetComponent<Canvas>();
+        panelRectTransform = GetComponent<RectTransform>();
     }
 
     public virtual void Activate()
     {
-        PanelCanvas.enabled = true;
-        PanelCanvas.sortingOrder = 1;
+        panelCanvas.enabled = true;
+        panelCanvas.sortingOrder = 1;
         StopCoroutine("DeactivateWithAnimation");
         PlayActivateAnimations();
     }
@@ -34,34 +35,34 @@ public class LB_UIPanel : MonoBehaviour {
     private IEnumerator DeactivateWithAnimation()
     {
         PlayDeactivateAnimations();
-        PanelCanvas.sortingOrder = 2;
+        panelCanvas.sortingOrder = 2;
 
-        yield return new WaitForSeconds(AnimationTime);
-        PanelCanvas.sortingOrder = 0;
-        PanelCanvas.enabled = false;
+        yield return new WaitForSeconds(animationTime);
+        panelCanvas.sortingOrder = 0;
+        panelCanvas.enabled = false;
     }
 
     private void InitUIElements()
     {
-        for (int i = 0; i < UIElements.Length; i++)
+        for (int i = 0; i < UIObjects.Length; i++)
         {
-            UIElements[i].Init();
+            UIObjects[i].Init();
         }
     }
 
     public void PlayActivateAnimations()
     {
-        for (int i = 0; i < UIElements.Length; i++)
+        for (int i = 0; i < UIObjects.Length; i++)
         {
-            UIElements[i].PlayActivateAnimation(AnimationTime);
+            UIObjects[i].PlayActivateAnimation();
         }
     }
 
     public void PlayDeactivateAnimations()
     {
-        for (int i = 0; i < UIElements.Length; i++)
+        for (int i = 0; i < UIObjects.Length; i++)
         {
-            UIElements[i].PlayDeactivateAnimation();
+            UIObjects[i].PlayDeactivateAnimation();
         }
     }
 }
