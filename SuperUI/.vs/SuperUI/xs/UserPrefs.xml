@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{2071EB85-D389-343D-707F-19405D9A56CB}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SuperUISample/MainMenuNavigationButton.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIBaseScripts/LB_Button.cs">
     <Files>
       <File FileName="Assets/Scripts/UIBaseScripts/LB_UIManager.cs" Line="19" Column="60" />
       <File FileName="Assets/Scripts/UIBaseScripts/LB_MenuEnumContainer.cs" Line="4" Column="13" />

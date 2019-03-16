@@ -12,11 +12,23 @@ public class LB_UIPanel : MonoBehaviour {
 
     protected float animationTime;
 
+    public virtual void PreInit()
+    {
+        PreInitUIObjects();
+    }
+
     public virtual void Init()
     {
-        animationTime = .5f;
+        animationTime = 0f;//todo animate
         panelCanvas = GetComponent<Canvas>();
         panelRectTransform = GetComponent<RectTransform>();
+
+        InitUIObjects();
+    }
+
+    public virtual void LateInit()
+    {
+        LateInitUIObjects();
     }
 
     public virtual void Activate()
@@ -42,11 +54,27 @@ public class LB_UIPanel : MonoBehaviour {
         panelCanvas.enabled = false;
     }
 
-    private void InitUIElements()
+    private void PreInitUIObjects()
+    {
+        for (int i = 0; i < UIObjects.Length; i++)
+        {
+            UIObjects[i].PreInit();
+        }
+    }
+
+    private void InitUIObjects()
     {
         for (int i = 0; i < UIObjects.Length; i++)
         {
             UIObjects[i].Init();
+        }
+    }
+
+    private void LateInitUIObjects()
+    {
+        for (int i = 0; i < UIObjects.Length; i++)
+        {
+            UIObjects[i].LateInit();
         }
     }
 

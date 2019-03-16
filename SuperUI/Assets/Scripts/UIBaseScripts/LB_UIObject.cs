@@ -11,9 +11,19 @@ public class LB_UIObject : MonoBehaviour {
 
     protected float animationTime;
 
+    public virtual void PreInit()
+    {
+
+    }
+
     public virtual void Init()
     {
         objectRectTransform = GetComponent<RectTransform>();
+    }
+
+    public virtual void LateInit()
+    {
+
     }
 
     public virtual void PlayActivateAnimation()
@@ -28,7 +38,7 @@ public class LB_UIObject : MonoBehaviour {
 
     public virtual void SetSize(Vector2 size)
     {
-        
+
     }
 
     public void SetWidth(float width, bool preserveAspect)
@@ -104,6 +114,11 @@ public class LB_UIObject : MonoBehaviour {
     }
 
     public virtual void CalculateSize(Vector2 screenSize)
+    {
+
+    }
+
+    public virtual void OnUIObjectDestroy()
     {
 
     }
