@@ -1,35 +1,75 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LB_UIManager : MonoBehaviour {
+public abstract class LB_UIManager : MonoBehaviour {
 
     protected Dictionary<PanelType, LB_UIPanel> panelsByPanelType;
 
     protected PanelType currentPanel;
     protected LB_UIPanel lastActivePanel;
 
-    public virtual void Init()
+    public void Awake()
     {
-        LB_UIEventManager.OnPanelActivated += ActivatePanel;
+        SetupPanels();
+        CallPanelsPreInits();
     }
 
-    public virtual void OnDeleted()
+    public void Start()
     {
-        LB_UIEventManager.OnPanelActivated -= ActivatePanel;
+        CallPanelsInits();
+        CallPanelsLateInits();
     }
 
-    public virtual void InitPanels()
+    public void OnDestroy()
     {
-        
+
     }
 
-    public virtual void ActivatePanel(PanelType panelType)
+    public abstract void SetupPanels();
+
+    private void CallPanelsPreInits()
     {
-        
+        foreach (var panel in panelsByPanelType)
+        {
+            panel.Value.PreInit();
+        }
+
     }
 
-    public virtual void DeactivatePanel(PanelType panel)
+    private void CallPanelsInits()
+    {
+        foreach (var panel in panelsByPanelType)
+        {
+            panel.Value.Init();
+        }
+    }
+
+    private void CallPanelsLateInits()
+    {
+        foreach (var panel in panelsByPanelType)
+        {
+            panel.Value.LateInit();
+        }
+    }
+
+    public void ActivatePanel(PanelType panelType)
+    {
+        if (panelsByPanelType.ContainsKey(panelType))
+        {
+            if (lastActivePanel != null)
+            {
+                lastActivePanel.Deactivate();
+            }
+
+            lastActivePanel = panelsByPanelType[panelType];
+            lastActivePanel.Activate();
+            LB_UIEventManager.Instance.SetPanelActivate(panelType);
+        }
+    }
+
+    public void DeactivatePanel(PanelType panel)
     {
 
     }

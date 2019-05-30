@@ -1,9 +1,9 @@
 public enum PanelType
 {
     main,
-    commons,
+    inGame,
+    gameOver,
     characters,
     market,
-    searching,
     settings
 }

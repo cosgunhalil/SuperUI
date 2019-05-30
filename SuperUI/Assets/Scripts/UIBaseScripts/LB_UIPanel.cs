@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LB_UIPanel : MonoBehaviour {
 
@@ -12,21 +14,42 @@ public class LB_UIPanel : MonoBehaviour {
 
     protected float animationTime;
 
-    public virtual void PreInit()
+    public virtual void PreInit() 
     {
         PreInitUIObjects();
     }
 
     public virtual void Init()
     {
-        animationTime = 0f;//todo animate
+        animationTime = .5f;
         panelCanvas = GetComponent<Canvas>();
         panelRectTransform = GetComponent<RectTransform>();
 
         InitUIObjects();
+        SetAnimationTime();
+
+        CalculateObjectCoordinates();
     }
 
-    public virtual void LateInit()
+    private void SetAnimationTime()
+    {
+        for (int i = 0; i < UIObjects.Length; i++)
+        {
+            UIObjects[i].SetAnimationTime(animationTime);
+        }
+    }
+
+    private void CalculateObjectCoordinates()
+    {
+        var canvasSize = GetCanvasSize();
+
+        for (int i = 0; i < UIObjects.Length; i++)
+        {
+            UIObjects[i].CalculateCoordinates(canvasSize);
+        }
+    }
+
+    public virtual void LateInit() 
     {
         LateInitUIObjects();
     }
@@ -70,7 +93,7 @@ public class LB_UIPanel : MonoBehaviour {
         }
     }
 
-    private void LateInitUIObjects()
+    private void LateInitUIObjects() 
     {
         for (int i = 0; i < UIObjects.Length; i++)
         {
@@ -92,5 +115,27 @@ public class LB_UIPanel : MonoBehaviour {
         {
             UIObjects[i].PlayDeactivateAnimation();
         }
+    }
+
+    public void OnDestroyCalled()
+    {
+
+    }
+
+    private Vector2 GetCanvasSize()
+    {
+        Vector2 screenSize = new Vector2(Screen.width, Screen.height);
+        CanvasScaler canvasScaler = GetComponent<CanvasScaler>();
+        var m_ScreenMatchMode = canvasScaler.screenMatchMode;
+        var m_ReferenceResolution = canvasScaler.referenceResolution;
+        var m_MatchWidthOrHeight = canvasScaler.matchWidthOrHeight;
+
+        float scaleFactor = 0;
+        float logWidth = Mathf.Log(screenSize.x / m_ReferenceResolution.x, 2);
+        float logHeight = Mathf.Log(screenSize.y / m_ReferenceResolution.y, 2);
+        float logWeightedAverage = Mathf.Lerp(logWidth, logHeight, m_MatchWidthOrHeight);
+        scaleFactor = Mathf.Pow(2, logWeightedAverage);
+
+        return new Vector2(screenSize.x / scaleFactor, screenSize.y / scaleFactor);
     }
 }

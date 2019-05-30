@@ -46,13 +46,12 @@ public class LB_Button : LB_UIObject {
 
     protected virtual void OnPointerDown() 
     {
-        var endValue = objectRectTransform.transform.localScale.x * sizeDivisionConst;
-        objectRectTransform.DOScale(endValue, touchAnimationTime).SetEase(Ease.InOutSine);
+
     }
 
     protected virtual void OnPointerUp() 
     {
-        objectRectTransform.DOScale(localScaleTemp, touchAnimationTime).SetEase(Ease.InOutSine);
+
     }
 
     protected virtual void OnPointerEnter() 

@@ -10,10 +10,11 @@ public class LB_UIObject : MonoBehaviour {
     protected Vector2 deactivtedCoordinate;
 
     protected float animationTime;
+    protected float subAnimationTime;
 
-    public virtual void PreInit()
-    {
-
+    public virtual void PreInit() 
+    { 
+        
     }
 
     public virtual void Init()
@@ -21,14 +22,14 @@ public class LB_UIObject : MonoBehaviour {
         objectRectTransform = GetComponent<RectTransform>();
     }
 
-    public virtual void LateInit()
-    {
-
+    public virtual void LateInit() 
+    { 
+        
     }
 
     public virtual void PlayActivateAnimation()
     {
-
+        
     }
 
     public virtual void PlayDeactivateAnimation()
@@ -38,7 +39,7 @@ public class LB_UIObject : MonoBehaviour {
 
     public virtual void SetSize(Vector2 size)
     {
-
+        
     }
 
     public void SetWidth(float width, bool preserveAspect)
@@ -57,6 +58,11 @@ public class LB_UIObject : MonoBehaviour {
             objectRectTransform.sizeDelta = new Vector2(width, objectRectTransform.sizeDelta.y);
         }
 
+    }
+
+    public void SetAnimationTime(float animationTime)
+    {
+        this.animationTime = animationTime;
     }
 
     public void SetHeight(float height, bool preserveAspect)
@@ -118,8 +124,23 @@ public class LB_UIObject : MonoBehaviour {
 
     }
 
-    public virtual void OnUIObjectDestroy()
-    {
+    public virtual void OnUIObjectDestroy() 
+    { 
+        
+    }
 
+    public Vector2 GetSizeDelta() 
+    {
+        return objectRectTransform.sizeDelta;
+    }
+
+    public Vector2 GetRectSize() 
+    {
+        return objectRectTransform.rect.size;
+    }
+
+    public Vector2 GetAnchoredPosition() 
+    {
+        return objectRectTransform.anchoredPosition;
     }
 }
