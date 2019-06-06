@@ -24,6 +24,8 @@ public class LB_PopUpPresenter : LB_UIPanel
     {
         var popUp = popUpFabric.GetPopUp(popUpSettings);
         popUp.transform.SetParent(gameObject.transform);
+        popUp.SetAnchorPosition(new Vector2(0, 0));
+        panelCanvas.enabled = true;
     }
 
     private void Awake()
@@ -44,8 +46,8 @@ public class LB_PopUpPresenter : LB_UIPanel
             {
                 Type = PopUpType.Warning,
                 hasOkeyButton = true,
-                hasCloseButton = false,
-                hasCancelButton = false,
+                hasCloseButton = true,
+                hasCancelButton = true,
                 Title = "Test-Pop-Up",
                 Content = "lorem ipsum dolar sit amed dans eder halay çeker."
             };
