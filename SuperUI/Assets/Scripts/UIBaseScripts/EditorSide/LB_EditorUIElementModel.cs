@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class LB_EditorUIElementModel {
 
-    public string UIElementName;
-    public UIElementType UIElementType;
+    public string UIObjectName;
+    public UIObjectType ObjectType;
 
-    public LB_EditorUIElementModel(string elementName, UIElementType uiElementType)
+    public LB_EditorUIElementModel(string uiObjectName, UIObjectType uiObjectType)
     {
-        this.UIElementName = elementName;
-        this.UIElementType = uiElementType;
+        this.UIObjectName = uiObjectName;
+        this.ObjectType = uiObjectType;
     }
 }

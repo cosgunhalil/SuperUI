@@ -1,13 +1,15 @@
 ﻿<Properties StartupConfiguration="{2071EB85-D389-343D-707F-19405D9A56CB}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIBaseScripts/LB_Button.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIBaseScripts/PopupPresenter/LB_PopUpFabric.cs">
     <Files>
-      <File FileName="Assets/Scripts/UIBaseScripts/LB_UIManager.cs" Line="74" Column="9" />
-      <File FileName="Assets/Scripts/UIBaseScripts/LB_MenuEnumContainer.cs" Line="4" Column="12" />
-      <File FileName="Assets/Scripts/UIBaseScripts/LB_UIPanel.cs" Line="16" Column="1" />
-      <File FileName="Assets/Helpers/LB_AnchorHandler.cs" Line="59" Column="2" />
-      <File FileName="Assets/Scripts/SuperUISample/MainMenuNavigationButton.cs" Line="9" Column="17" />
-      <File FileName="Assets/Scripts/UIBaseScripts/LB_UIObject.cs" Line="8" Column="29" />
-      <File FileName="Assets/Scripts/UIBaseScripts/LB_Button.cs" Line="49" Column="1" />
+      <File FileName="Assets/Scripts/UIBaseScripts/LB_UIManager.cs" Line="74" Column="1" />
+      <File FileName="Assets/Scripts/UIBaseScripts/LB_MenuEnumContainer.cs" Line="1" Column="22" />
+      <File FileName="Assets/Scripts/UIBaseScripts/PopupPresenter/LB_PopUp.cs" Line="29" Column="6" />
+      <File FileName="Assets/Scripts/UIBaseScripts/LB_Button.cs" Line="67" Column="35" />
+      <File FileName="Assets/Scripts/UIBaseScripts/LB_UIObject.cs" Line="20" Column="25" />
+      <File FileName="Assets/Scripts/UIBaseScripts/PopupPresenter/LB_PopUpFabric.cs" Line="24" Column="15" />
+      <File FileName="Assets/Scripts/UIBaseScripts/PopupPresenter/LB_Poolable.cs" Line="11" Column="20" />
+      <File FileName="Assets/Scripts/UIBaseScripts/PopupPresenter/LB_Pool.cs" Line="46" Column="28" />
+      <File FileName="Assets/Scripts/UIBaseScripts/PopupPresenter/LB_PopUpPresenter.cs" Line="52" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
