@@ -1,16 +1,9 @@
 ﻿<Properties StartupConfiguration="{2071EB85-D389-343D-707F-19405D9A56CB}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIBaseScripts/PopupPresenter/LB_PopUpPresenter.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SuperUI/Scripts/PopupPresenter/LB_PopUp.cs">
     <Files>
-      <File FileName="Assets/Scripts/UIBaseScripts/LB_UIManager.cs" Line="74" Column="1" />
-      <File FileName="Assets/Scripts/UIBaseScripts/LB_MenuEnumContainer.cs" Line="1" Column="22" />
-      <File FileName="Assets/Scripts/UIBaseScripts/PopupPresenter/LB_PopUp.cs" Line="29" Column="6" />
-      <File FileName="Assets/Scripts/UIBaseScripts/LB_Button.cs" Line="67" Column="35" />
-      <File FileName="Assets/Scripts/UIBaseScripts/LB_UIObject.cs" Line="20" Column="25" />
-      <File FileName="Assets/Scripts/UIBaseScripts/PopupPresenter/LB_PopUpFabric.cs" Line="21" Column="42" />
-      <File FileName="Assets/Scripts/UIBaseScripts/PopupPresenter/LB_Poolable.cs" Line="11" Column="20" />
-      <File FileName="Assets/Scripts/UIBaseScripts/PopupPresenter/LB_Pool.cs" Line="40" Column="1" />
-      <File FileName="Assets/Scripts/UIBaseScripts/PopupPresenter/LB_PopUpPresenter.cs" Line="28" Column="36" />
-      <File FileName="Assets/Scripts/UIBaseScripts/LB_UIPanel.cs" Line="12" Column="28" />
+      <File FileName="Assets/SuperUI/Scripts/PopupPresenter/LB_PopUpPresenter.cs" Line="26" Column="11" />
+      <File FileName="Assets/SuperUI/Scripts/SuperUISample/PopUpSystemSample.cs" Line="30" Column="29" />
+      <File FileName="Assets/SuperUI/Scripts/PopupPresenter/LB_PopUp.cs" Line="13" Column="50" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
