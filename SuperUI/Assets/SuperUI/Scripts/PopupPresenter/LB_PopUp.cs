@@ -6,11 +6,30 @@ using TMPro;
 
 public class LB_PopUp : LB_UIObject, LB_Poolable
 {
+
+    List<MessageAction> delegates = new List<MessageAction>();
+
     public TextMeshProUGUI PopUpTitleContainer;
     public TextMeshProUGUI PopUpContentContainer;
 
     public delegate void MessageAction(PopUpResponseType responseType);
-    public event MessageAction OnPopUpResponseCome;
+
+    private event MessageAction OnPopUpResponseCome;
+
+    public event MessageAction OnPopUpResponseComeEvent 
+    {
+        add 
+        {
+            OnPopUpResponseCome += value;
+            delegates.Add(value);
+        }
+
+        remove 
+        {
+            OnPopUpResponseCome -= value;
+            delegates.Remove(value);
+        }
+    }
 
     [SerializeField]
     protected LB_Button OkButton;
@@ -27,6 +46,7 @@ public class LB_PopUp : LB_UIObject, LB_Poolable
 
     public void OnDeactivate()
     {
+        RemoveAllEvents();
         PlayDeactivateAnimation();
         gameObject.SetActive(false);
     }
@@ -120,6 +140,16 @@ public class LB_PopUp : LB_UIObject, LB_Poolable
     private void SetPopUpBackgroundImage(PopUpType type)
     {
         //return popUpSkinData.GetPopUpBackgroundImage(type); 
+    }
+
+    private void RemoveAllEvents()
+    {
+        foreach (MessageAction ma in delegates)
+        {
+            OnPopUpResponseCome -= ma;
+        }
+
+        delegates.Clear();
     }
 }
 

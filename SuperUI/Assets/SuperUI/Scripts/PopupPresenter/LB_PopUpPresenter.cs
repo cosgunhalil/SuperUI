@@ -47,12 +47,12 @@ public class LB_PopUpPresenter : LB_UIPanel
     {
         if(activePopup != null) 
         {
-            activePopup.OnPopUpResponseCome -= ActivePopup_OnPopUpResponseCome;
+            activePopup.OnPopUpResponseComeEvent -= ActivePopup_OnPopUpResponseCome;
         }
 
         activePopup = popUpQueue[popUpQueue.Count - 1];
 
-        activePopup.OnPopUpResponseCome += ActivePopup_OnPopUpResponseCome;
+        activePopup.OnPopUpResponseComeEvent += ActivePopup_OnPopUpResponseCome;
     }
 
     private void Awake()
@@ -75,7 +75,7 @@ public class LB_PopUpPresenter : LB_UIPanel
         popUpFabric.PopUpRecycled(activePopup);
         popUpQueue.Remove(activePopup);
 
-        activePopup.OnPopUpResponseCome -= ActivePopup_OnPopUpResponseCome;
+        activePopup.OnPopUpResponseComeEvent -= ActivePopup_OnPopUpResponseCome;
 
         if (popUpQueue.Count > 0) 
         {

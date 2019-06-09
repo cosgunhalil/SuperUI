@@ -25,8 +25,7 @@ public class PopUpSystemSample : MonoBehaviour
             };
 
             activePopup = PopUpPresenter.PresentPopUp(popUpSettings);
-            activePopup.OnPopUpResponseCome += ActivePopup_OnPopUpResponseCome;
-
+            activePopup.OnPopUpResponseComeEvent += ActivePopup_OnPopUpResponseCome;
         }
     }
 
@@ -47,7 +46,7 @@ public class PopUpSystemSample : MonoBehaviour
                 break;
         }
 
-        activePopup.OnPopUpResponseCome -= ActivePopup_OnPopUpResponseCome;
+        activePopup.OnPopUpResponseComeEvent -= ActivePopup_OnPopUpResponseCome;
     }
 
 }
