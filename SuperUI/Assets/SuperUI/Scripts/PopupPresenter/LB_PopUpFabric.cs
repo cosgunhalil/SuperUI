@@ -1,38 +1,43 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-[RequireComponent(typeof(LB_Pool))]
-public class LB_PopUpFabric : MonoBehaviour
+﻿
+namespace LB.SuperUI.PopUpSystem 
 {
-    private LB_Pool pool;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
 
-    public void InitializeFabric() 
+    [RequireComponent(typeof(LB_Pool))]
+    public class LB_PopUpFabric : MonoBehaviour
     {
-        pool = GetComponent<LB_Pool>();
-        pool.PopulatePool(3);
+        private LB_Pool pool;
+
+        public void InitializeFabric()
+        {
+            pool = GetComponent<LB_Pool>();
+            pool.PopulatePool(3);
+        }
+
+        public LB_PopUp GetPopUp(PopUpSettings popUpSettings)
+        {
+            var popUpTemplate = pool.GetPoolable();
+            popUpTemplate.ApplySettings(popUpSettings);
+            return popUpTemplate as LB_PopUp;
+        }
+
+        public void PopUpRecycled(LB_Poolable popUp)
+        {
+            pool.AddObjectToPool(popUp);
+        }
     }
 
-    public LB_PopUp GetPopUp(PopUpSettings popUpSettings)
+    public struct PopUpSettings
     {
-        var popUpTemplate = pool.GetPoolable();
-        popUpTemplate.ApplySettings(popUpSettings);
-        return popUpTemplate as LB_PopUp;
+        public PopUpType Type;
+        public bool hasOkeyButton;
+        public bool hasCancelButton;
+        public bool hasCloseButton;
+        public string Title;
+        public string Content;
     }
 
-    public void PopUpRecycled(LB_Poolable popUp) 
-    {
-        pool.AddObjectToPool(popUp);
-    }
-}
-
-public struct PopUpSettings 
-{
-    public PopUpType Type;
-    public bool hasOkeyButton;
-    public bool hasCancelButton;
-    public bool hasCloseButton;
-    public string Title;
-    public string Content;
 }

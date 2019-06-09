@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using LB.SuperUI.PopUpSystem;
 using UnityEngine;
 
 public class PopUpSystemSample : MonoBehaviour
@@ -45,8 +46,6 @@ public class PopUpSystemSample : MonoBehaviour
             default:
                 break;
         }
-
-        activePopup.OnPopUpResponseComeEvent -= ActivePopup_OnPopUpResponseCome;
     }
 
 }

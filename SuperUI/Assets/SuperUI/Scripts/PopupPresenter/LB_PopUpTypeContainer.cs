@@ -1,6 +1,10 @@
-﻿
-public enum PopUpType
+﻿namespace LB.SuperUI.PopUpSystem
 {
-    Warning,//title, content and close button 
-    Comfirmation, //title, content, OK and Cancel button
+    public enum PopUpType
+    {
+        Warning,//title, content and close button 
+        Comfirmation, //title, content, OK and Cancel button
+    }
 }
+
+
