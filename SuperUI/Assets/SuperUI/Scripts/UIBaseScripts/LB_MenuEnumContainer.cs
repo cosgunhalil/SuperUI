@@ -1,7 +1,12 @@
-public enum PanelType
+
+namespace LB.SuperUI.BaseComponents
 {
-    main,
-    gameOver,
-    inGame,
-    characters
+    public enum PanelType
+    {
+        main,
+        gameOver,
+        inGame,
+        characters
+    }
 }
+

@@ -1,10 +1,10 @@
 ﻿namespace LB.SuperUI.PopUpSystem
 {
-    using System;
-    using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
     using TMPro;
+    using LB.SuperUI.Pool;
+    using LB.SuperUI.BaseComponents;
 
     public class LB_PopUp : LB_UIObject, LB_Poolable
     {

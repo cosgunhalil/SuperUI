@@ -3,6 +3,7 @@ namespace LB.SuperUI.PopUpSystem
 {
     using System.Collections.Generic;
     using UnityEngine;
+    using LB.SuperUI.BaseComponents;
 
     [RequireComponent(typeof(LB_PopUpFabric))]
     public class LB_PopUpPresenter : LB_UIPanel

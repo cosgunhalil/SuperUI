@@ -1,10 +1,8 @@
 ﻿
 namespace LB.SuperUI.PopUpSystem 
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
+    using LB.SuperUI.Pool;
 
     [RequireComponent(typeof(LB_Pool))]
     public class LB_PopUpFabric : MonoBehaviour

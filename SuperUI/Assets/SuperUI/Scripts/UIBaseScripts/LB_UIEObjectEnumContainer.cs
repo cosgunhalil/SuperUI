@@ -1,7 +1,13 @@
-﻿public enum UIObjectType
+﻿
+namespace LB.SuperUI.BaseComponents
 {
-    button,
-    textContainer,
-    inputField,
-    image
+    public enum UIObjectType
+    {
+        button,
+        textContainer,
+        inputField,
+        image
+    }
 }
+
+

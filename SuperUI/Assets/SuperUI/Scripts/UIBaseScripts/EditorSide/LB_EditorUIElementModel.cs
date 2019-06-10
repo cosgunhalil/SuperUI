@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using LB.SuperUI.BaseComponents;
+
 public class LB_EditorUIElementModel {
 
     public string UIObjectName;
