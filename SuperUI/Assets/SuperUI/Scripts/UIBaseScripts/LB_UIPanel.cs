@@ -10,7 +10,7 @@ namespace LB.SuperUI.BaseComponents
 
         public LB_UIObject[] UIObjects;
 
-        protected PanelType panelType;
+        protected UIState panelType;
         protected Canvas panelCanvas;
         protected RectTransform panelRectTransform;
 

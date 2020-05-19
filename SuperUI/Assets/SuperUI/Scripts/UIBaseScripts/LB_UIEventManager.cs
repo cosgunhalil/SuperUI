@@ -4,7 +4,7 @@ namespace LB.SuperUI.BaseComponents
     public class LB_UIEventManager
     {
 
-        public delegate void PanelActivatedDelegate(PanelType panelType);
+        public delegate void PanelActivatedDelegate(UIState panelType);
         public static PanelActivatedDelegate OnPanelActivated;
 
         private static readonly LB_UIEventManager instance = new LB_UIEventManager();
@@ -27,7 +27,7 @@ namespace LB.SuperUI.BaseComponents
             }
         }
 
-        public void SetPanelActivate(PanelType panelType)
+        public void SetPanelActivate(UIState panelType)
         {
             if (OnPanelActivated != null)
             {

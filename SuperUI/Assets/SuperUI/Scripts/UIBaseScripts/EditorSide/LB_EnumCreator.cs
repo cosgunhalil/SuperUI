@@ -31,7 +31,7 @@ public class LB_EnumCreator : EditorWindow{
     private List<string> GetEnumStrings()
     {
         var currentEnums = new List<string>();
-        foreach (var enumString in Enum.GetNames(typeof(PanelType)))
+        foreach (var enumString in Enum.GetNames(typeof(UIState)))
         {
             currentEnums.Add(enumString);
         }

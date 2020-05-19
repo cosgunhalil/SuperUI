@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{2071EB85-D389-343D-707F-19405D9A56CB}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SuperUI/Scripts/Helpers/ObserverDesignPattern/ISubject.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SuperUI/Scripts/UIBaseScripts/UIStateChangedEventArgs.cs">
     <Files>
       <File FileName="Assets/SuperUI/Scripts/PopupPresenter/LB_PopUpPresenter.cs" Line="6" Column="37" />
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_Button.cs" />
@@ -7,7 +7,7 @@
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIEObjectEnumContainer.cs" />
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIEvent.cs" />
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIEventManager.cs" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIManager.cs" />
+      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIManager.cs" Line="8" Column="55" />
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIObject.cs" />
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIPanel.cs" />
       <File FileName="Assets/SuperUI/Scripts/SuperUISample/MainMenuNavigationButton.cs" />
@@ -15,8 +15,9 @@
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/EditorSide/LB_EditorUIElementModel.cs" />
       <File FileName="Assets/SuperUI/Scripts/PopupPresenter/LB_PopUp.cs" />
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/EditorSide/LB_EnumCreator.cs" Line="7" Column="10" />
-      <File FileName="Assets/SuperUI/Scripts/Helpers/ObserverDesignPattern/IObserver.cs" Line="2" Column="1" />
-      <File FileName="Assets/SuperUI/Scripts/Helpers/ObserverDesignPattern/ISubject.cs" Line="7" Column="5" />
+      <File FileName="Assets/SuperUI/Scripts/Helpers/ObserverDesignPattern/IObserver.cs" Line="4" Column="18" />
+      <File FileName="Assets/SuperUI/Scripts/Helpers/ObserverDesignPattern/ISubject.cs" Line="8" Column="44" />
+      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/UIStateChangedEventArgs.cs" Line="5" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

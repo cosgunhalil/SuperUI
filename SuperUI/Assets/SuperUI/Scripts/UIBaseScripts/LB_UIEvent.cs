@@ -4,10 +4,10 @@ namespace LB.SuperUI.BaseComponents
     public class LB_UIEvent
     {
 
-        public PanelType Type;
+        public UIState Type;
         public object[] ExtraInfo;
 
-        public LB_UIEvent(PanelType type, object[] extraInfo = null)
+        public LB_UIEvent(UIState type, object[] extraInfo = null)
         {
             this.Type = type;
             this.ExtraInfo = extraInfo;

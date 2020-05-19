@@ -1,79 +1,48 @@
 ﻿
 namespace LB.SuperUI.BaseComponents 
 {
+    using System;
     using System.Collections.Generic;
+    using LB.SuperUI.Helpers.Observer;
     using UnityEngine;
 
-    public abstract class LB_UIManager : MonoBehaviour
+    public abstract class LB_UIManager : MonoBehaviour, ISubject<UIStateChangedEventArgs>
     {
-
-        protected Dictionary<PanelType, LB_UIPanel> panelsByPanelType;
-
-        protected PanelType currentPanel;
-        protected LB_UIPanel lastActivePanel;
+        public event EventHandler<UIStateChangedEventArgs> UIStateChanged;
+        protected List<LB_UIPanel> panels;
 
         public void Awake()
         {
-            SetupPanels();
-            CallPanelsPreInits();
+            for (int i = 0; i < panels.Count; ++i)
+            {
+                panels[i].PreInit();
+            }
         }
 
         public void Start()
         {
-            CallPanelsInits();
-            CallPanelsLateInits();
+            for (int i = 0; i < panels.Count; ++i)
+            {
+                panels[i].Init();
+            }
         }
 
         public void OnDestroy()
         {
-
-        }
-
-        public abstract void SetupPanels();
-
-        private void CallPanelsPreInits()
-        {
-            foreach (var panel in panelsByPanelType)
+            for (int i = 0; i < panels.Count; ++i)
             {
-                panel.Value.PreInit();
-            }
-
-        }
-
-        private void CallPanelsInits()
-        {
-            foreach (var panel in panelsByPanelType)
-            {
-                panel.Value.Init();
+                panels[i].OnDestroyCalled();
             }
         }
 
-        private void CallPanelsLateInits()
+        public void Attach(Helpers.Observer.IObserver<UIStateChangedEventArgs> observer)
         {
-            foreach (var panel in panelsByPanelType)
-            {
-                panel.Value.LateInit();
-            }
+            UIStateChanged += observer.Syncronize;
         }
 
-        public void ActivatePanel(PanelType panelType)
+        public void Detach(Helpers.Observer.IObserver<UIStateChangedEventArgs> observer)
         {
-            if (panelsByPanelType.ContainsKey(panelType))
-            {
-                if (lastActivePanel != null)
-                {
-                    lastActivePanel.Deactivate();
-                }
-
-                lastActivePanel = panelsByPanelType[panelType];
-                lastActivePanel.Activate();
-                LB_UIEventManager.Instance.SetPanelActivate(panelType);
-            }
-        }
-
-        public void DeactivatePanel(PanelType panel)
-        {
-
+            UIStateChanged -= observer.Syncronize;
         }
     }
 

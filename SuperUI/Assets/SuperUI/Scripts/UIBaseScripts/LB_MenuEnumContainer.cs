@@ -1,7 +1,7 @@
 
 namespace LB.SuperUI.BaseComponents
 {
-    public enum PanelType
+    public enum UIState
     {
         MAIN,
         GAME_OVER,
