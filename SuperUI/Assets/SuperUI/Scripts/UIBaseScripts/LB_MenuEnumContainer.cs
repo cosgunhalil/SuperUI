@@ -3,10 +3,10 @@ namespace LB.SuperUI.BaseComponents
 {
     public enum PanelType
     {
-        main,
-        gameOver,
-        inGame,
-        characters
+        MAIN,
+        GAME_OVER,
+        IN_GAME,
+        CHARACTERS
     }
 }
 
