@@ -1,28 +1,28 @@
 ﻿<Properties StartupConfiguration="{2071EB85-D389-343D-707F-19405D9A56CB}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SuperUI/Scripts/UIBaseScripts/UIStateChangedEventArgs.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Sample/Scripts/CommonsPanel.cs">
     <Files>
       <File FileName="Assets/SuperUI/Scripts/PopupPresenter/LB_PopUpPresenter.cs" Line="6" Column="37" />
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_Button.cs" />
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_MenuEnumContainer.cs" />
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIEObjectEnumContainer.cs" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIEvent.cs" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIEventManager.cs" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIManager.cs" Line="8" Column="55" />
+      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIEvent.cs" Line="2" Column="1" />
+      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIManager.cs" Line="11" Column="75" />
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIObject.cs" />
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIPanel.cs" />
-      <File FileName="Assets/SuperUI/Scripts/SuperUISample/MainMenuNavigationButton.cs" />
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/EditorSide/LB_EditorPanelModel.cs" />
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/EditorSide/LB_EditorUIElementModel.cs" />
-      <File FileName="Assets/SuperUI/Scripts/PopupPresenter/LB_PopUp.cs" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/EditorSide/LB_EnumCreator.cs" Line="7" Column="10" />
+      <File FileName="Assets/SuperUI/Scripts/PopupPresenter/LB_PopUp.cs" Line="1" Column="33" />
+      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/EditorSide/LB_EnumCreator.cs" Line="34" Column="64" />
       <File FileName="Assets/SuperUI/Scripts/Helpers/ObserverDesignPattern/IObserver.cs" Line="4" Column="18" />
       <File FileName="Assets/SuperUI/Scripts/Helpers/ObserverDesignPattern/ISubject.cs" Line="8" Column="44" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/UIStateChangedEventArgs.cs" Line="5" Column="13" />
+      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/UIStateChangedEventArgs.cs" Line="11" Column="33" />
+      <File FileName="Assets/Sample/Scripts/MainMenuPanel.cs" Line="8" Column="1" />
+      <File FileName="Assets/Sample/Scripts/CommonsPanel.cs" Line="5" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="9687a7b2-79eb-4900-891a-a10350e70d39" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="449176b9-7369-4aff-bb68-9812df9a1f59" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

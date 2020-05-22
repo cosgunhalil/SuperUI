@@ -21,6 +21,7 @@ namespace LB.SuperUI.BaseComponents
             PreInitUIObjects();
         }
 
+        //must be abstract - todo refactor
         public virtual void Init()
         {
             animationTime = .5f;

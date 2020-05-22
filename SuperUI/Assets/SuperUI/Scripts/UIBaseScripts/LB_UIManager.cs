@@ -6,22 +6,29 @@ namespace LB.SuperUI.BaseComponents
     using LB.SuperUI.Helpers.Observer;
     using UnityEngine;
 
-    public abstract class LB_UIManager : MonoBehaviour, ISubject<UIStateChangedEventArgs>
+    public class LB_UIManager : MonoBehaviour, ISubject<UIStateChangedEventArgs>
     {
         public event EventHandler<UIStateChangedEventArgs> UIStateChanged;
-        protected List<LB_UIPanel> panels;
+        private LB_UIPanel[] panels;
 
         public void Awake()
         {
-            for (int i = 0; i < panels.Count; ++i)
+            FindAllPanels();
+
+            for (int i = 0; i < panels.Length; ++i)
             {
                 panels[i].PreInit();
             }
         }
 
+        private void FindAllPanels()
+        {
+            panels = FindObjectsOfType<LB_UIPanel>();
+        }
+
         public void Start()
         {
-            for (int i = 0; i < panels.Count; ++i)
+            for (int i = 0; i < panels.Length; ++i)
             {
                 panels[i].Init();
             }
@@ -29,7 +36,7 @@ namespace LB.SuperUI.BaseComponents
 
         public void OnDestroy()
         {
-            for (int i = 0; i < panels.Count; ++i)
+            for (int i = 0; i < panels.Length; ++i)
             {
                 panels[i].OnDestroyCalled();
             }
