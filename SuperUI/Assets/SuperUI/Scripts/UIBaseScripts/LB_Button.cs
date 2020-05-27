@@ -9,7 +9,6 @@ namespace LB.SuperUI.BaseComponents
     [RequireComponent(typeof(Button))]
     public class LB_Button : LB_UIObject
     {
-
         public delegate void MessageAction();
         public event MessageAction OnPointerDownEvent;
         public event MessageAction OnPointerUpEvent;
@@ -92,6 +91,10 @@ namespace LB.SuperUI.BaseComponents
             eventTrigger.triggers.Add(entry);
         }
 
+        public override void Setup(Vector2 canvasSize)
+        {
+            
+        }
     }
 
 }

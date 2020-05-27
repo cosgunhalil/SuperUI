@@ -1,28 +1,20 @@
 ﻿<Properties StartupConfiguration="{2071EB85-D389-343D-707F-19405D9A56CB}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Sample/Scripts/CommonsPanel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIManager.cs">
     <Files>
-      <File FileName="Assets/SuperUI/Scripts/PopupPresenter/LB_PopUpPresenter.cs" Line="6" Column="37" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_Button.cs" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_MenuEnumContainer.cs" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIEObjectEnumContainer.cs" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIEvent.cs" Line="2" Column="1" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIManager.cs" Line="11" Column="75" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIObject.cs" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIPanel.cs" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/EditorSide/LB_EditorPanelModel.cs" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/EditorSide/LB_EditorUIElementModel.cs" />
-      <File FileName="Assets/SuperUI/Scripts/PopupPresenter/LB_PopUp.cs" Line="1" Column="33" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/EditorSide/LB_EnumCreator.cs" Line="34" Column="64" />
-      <File FileName="Assets/SuperUI/Scripts/Helpers/ObserverDesignPattern/IObserver.cs" Line="4" Column="18" />
-      <File FileName="Assets/SuperUI/Scripts/Helpers/ObserverDesignPattern/ISubject.cs" Line="8" Column="44" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/UIStateChangedEventArgs.cs" Line="11" Column="33" />
-      <File FileName="Assets/Sample/Scripts/MainMenuPanel.cs" Line="8" Column="1" />
-      <File FileName="Assets/Sample/Scripts/CommonsPanel.cs" Line="5" Column="11" />
+      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_Object.cs" Line="13" Column="12" />
+      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIPanel.cs" Line="30" Column="24" />
+      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIObject.cs" Line="17" Column="1" />
+      <File FileName="Assets/Sample/Scripts/CommonsPanel.cs" Line="16" Column="48" />
+      <File FileName="Assets/Sample/Scripts/MainMenuPanel.cs" Line="7" Column="38" />
+      <File FileName="Assets/SuperUI/Scripts/PopupPresenter/LB_PopUpPresenter.cs" Line="15" Column="15" />
+      <File FileName="Assets/SuperUI/Scripts/PopupPresenter/LB_PopUp.cs" Line="159" Column="15" />
+      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_Button.cs" Line="10" Column="33" />
+      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIManager.cs" Line="26" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="449176b9-7369-4aff-bb68-9812df9a1f59" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="99ce433c-0c8f-45b9-88ce-66213939a86b" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -3,9 +3,8 @@ namespace LB.SuperUI.BaseComponents
 {
     using UnityEngine;
 
-    public class LB_UIObject : MonoBehaviour
+    public abstract class LB_UIObject : LB_Object
     {
-
         protected RectTransform objectRectTransform;
         protected Vector2 activatedCoordinate;
         protected Vector2 deactivtedCoordinate;
@@ -13,17 +12,19 @@ namespace LB.SuperUI.BaseComponents
         protected float animationTime;
         protected float subAnimationTime;
 
-        public virtual void PreInit()
+        public override void PreInit()
         {
 
         }
 
-        public virtual void Init()
+        public override void Init()
         {
             objectRectTransform = GetComponent<RectTransform>();
         }
 
-        public virtual void LateInit()
+        public abstract void Setup(Vector2 canvasSize);
+
+        public override void LateInit()
         {
 
         }
@@ -84,22 +85,6 @@ namespace LB.SuperUI.BaseComponents
 
         }
 
-
-        public virtual void CalculateCoordinates()
-        {
-
-        }
-
-        public virtual void CalculateCoordinates(float canvasWidth)
-        {
-
-        }
-
-        public virtual void CalculateCoordinates(Vector2 screenSize)
-        {
-
-        }
-
         public virtual void SetPosition(float width)
         {
 
@@ -118,11 +103,6 @@ namespace LB.SuperUI.BaseComponents
         public void SetAnchorPosition(Vector2 position)
         {
             objectRectTransform.anchoredPosition = position;
-        }
-
-        public virtual void CalculateSize(Vector2 screenSize)
-        {
-
         }
 
         public virtual void OnUIObjectDestroy()
@@ -144,6 +124,7 @@ namespace LB.SuperUI.BaseComponents
         {
             return objectRectTransform.anchoredPosition;
         }
+
     }
 
 }

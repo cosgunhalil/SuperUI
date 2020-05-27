@@ -153,6 +153,11 @@
 
             delegates.Clear();
         }
+
+        public override void Setup(Vector2 canvasSize)
+        {
+            //
+        }
     }
 
     public enum PopUpResponseType

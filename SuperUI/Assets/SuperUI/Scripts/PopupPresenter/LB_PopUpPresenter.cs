@@ -12,16 +12,10 @@ namespace LB.SuperUI.PopUpSystem
         private List<LB_PopUp> popUpQueue;
         private LB_PopUp activePopup;
 
-        public override void PreInit()
+        public override void Setup()
         {
-            base.PreInit();
             popUpQueue = new List<LB_PopUp>();
             popUpFabric = GetComponent<LB_PopUpFabric>();
-        }
-
-        public override void Init()
-        {
-            base.Init();
             popUpFabric.InitializeFabric();
         }
 
@@ -112,7 +106,6 @@ namespace LB.SuperUI.PopUpSystem
                     break;
             }
         }
-
     }
 
 }

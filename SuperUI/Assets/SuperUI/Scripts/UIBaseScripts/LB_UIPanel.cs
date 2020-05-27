@@ -5,10 +5,9 @@ namespace LB.SuperUI.BaseComponents
     using UnityEngine;
     using UnityEngine.UI;
 
-    public class LB_UIPanel : MonoBehaviour
+    public abstract class LB_UIPanel : LB_Object
     {
-
-        public LB_UIObject[] UIObjects;
+        protected LB_UIObject[] uIObjects;
 
         protected UIState panelType;
         protected Canvas panelCanvas;
@@ -16,45 +15,41 @@ namespace LB.SuperUI.BaseComponents
 
         protected float animationTime;
 
-        public virtual void PreInit()
+        public abstract void Setup();
+
+        public override void PreInit()
         {
-            PreInitUIObjects();
+            uIObjects = transform.GetComponentsInChildren<LB_UIObject>();
+
+            for (int i = 0; i < uIObjects.Length; i++)
+            {
+                uIObjects[i].PreInit();
+            }
         }
 
-        //must be abstract - todo refactor
-        public virtual void Init()
+        public override void Init()
         {
             animationTime = .5f;
             panelCanvas = GetComponent<Canvas>();
             panelRectTransform = GetComponent<RectTransform>();
 
-            InitUIObjects();
-            SetAnimationTime();
+            Setup();
 
-            CalculateObjectCoordinates();
-        }
-
-        private void SetAnimationTime()
-        {
-            for (int i = 0; i < UIObjects.Length; i++)
-            {
-                UIObjects[i].SetAnimationTime(animationTime);
-            }
-        }
-
-        private void CalculateObjectCoordinates()
-        {
             var canvasSize = GetCanvasSize();
 
-            for (int i = 0; i < UIObjects.Length; i++)
+            for (int i = 0; i < uIObjects.Length; i++)
             {
-                UIObjects[i].CalculateCoordinates(canvasSize);
+                uIObjects[i].Init();
+                uIObjects[i].Setup(canvasSize);
             }
         }
 
-        public virtual void LateInit()
+        public override void LateInit()
         {
-            LateInitUIObjects();
+            for (int i = 0; i < uIObjects.Length; i++)
+            {
+                uIObjects[i].LateInit();
+            }
         }
 
         public virtual void Activate()
@@ -80,51 +75,31 @@ namespace LB.SuperUI.BaseComponents
             panelCanvas.enabled = false;
         }
 
-        private void PreInitUIObjects()
-        {
-            for (int i = 0; i < UIObjects.Length; i++)
-            {
-                UIObjects[i].PreInit();
-            }
-        }
-
-        private void InitUIObjects()
-        {
-            for (int i = 0; i < UIObjects.Length; i++)
-            {
-                UIObjects[i].Init();
-            }
-        }
-
-        private void LateInitUIObjects()
-        {
-            for (int i = 0; i < UIObjects.Length; i++)
-            {
-                UIObjects[i].LateInit();
-            }
-        }
-
         public void PlayActivateAnimations()
         {
-            for (int i = 0; i < UIObjects.Length; i++)
+            for (int i = 0; i < uIObjects.Length; i++)
             {
-                UIObjects[i].PlayActivateAnimation();
+                uIObjects[i].PlayActivateAnimation();
             }
         }
 
         public void PlayDeactivateAnimations()
         {
-            for (int i = 0; i < UIObjects.Length; i++)
+            for (int i = 0; i < uIObjects.Length; i++)
             {
-                UIObjects[i].PlayDeactivateAnimation();
+                uIObjects[i].PlayDeactivateAnimation();
             }
         }
 
         public void OnDestroyCalled()
         {
-
+            for (int i = 0; i < uIObjects.Length; i++)
+            {
+                uIObjects[i].OnUIObjectDestroy();
+            }
         }
 
+        //
         private Vector2 GetCanvasSize()
         {
             Vector2 screenSize = new Vector2(Screen.width, Screen.height);
