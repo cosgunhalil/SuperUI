@@ -632,6 +632,7 @@ GameObject:
   - component: {fileID: 443785117}
   - component: {fileID: 443785119}
   - component: {fileID: 443785118}
+  - component: {fileID: 443785120}
   m_Layer: 5
   m_Name: Chest1
   m_TagString: Untagged
@@ -694,6 +695,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443785116}
   m_CullTransparentMesh: 0
+--- !u!114 &443785120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443785116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f621ce362ba4d94ac2891297dae4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &459482981
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,6 +919,7 @@ GameObject:
   - component: {fileID: 543634277}
   - component: {fileID: 543634279}
   - component: {fileID: 543634278}
+  - component: {fileID: 543634280}
   m_Layer: 5
   m_Name: Chest2
   m_TagString: Untagged
@@ -968,6 +982,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543634276}
   m_CullTransparentMesh: 0
+--- !u!114 &543634280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543634276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f621ce362ba4d94ac2891297dae4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &561975686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1577,6 +1603,7 @@ GameObject:
   - component: {fileID: 949492877}
   - component: {fileID: 949492879}
   - component: {fileID: 949492878}
+  - component: {fileID: 949492880}
   m_Layer: 5
   m_Name: Chest4
   m_TagString: Untagged
@@ -1639,6 +1666,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949492876}
   m_CullTransparentMesh: 0
+--- !u!114 &949492880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949492876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f621ce362ba4d94ac2891297dae4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1003395352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,6 +1807,7 @@ GameObject:
   - component: {fileID: 1011405966}
   - component: {fileID: 1011405968}
   - component: {fileID: 1011405967}
+  - component: {fileID: 1011405969}
   m_Layer: 5
   m_Name: Chest3
   m_TagString: Untagged
@@ -1830,6 +1870,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1011405965}
   m_CullTransparentMesh: 0
+--- !u!114 &1011405969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011405965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f621ce362ba4d94ac2891297dae4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1048310531
 GameObject:
   m_ObjectHideFlags: 0
@@ -3279,6 +3331,7 @@ GameObject:
   - component: {fileID: 1910833640}
   - component: {fileID: 1910833639}
   - component: {fileID: 1910833641}
+  - component: {fileID: 1910833642}
   m_Layer: 5
   m_Name: ChestContainer
   m_TagString: Untagged
@@ -3370,6 +3423,18 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &1910833642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910833637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8345c22db8be745f48c11068f66e2cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1914475017
 GameObject:
   m_ObjectHideFlags: 0

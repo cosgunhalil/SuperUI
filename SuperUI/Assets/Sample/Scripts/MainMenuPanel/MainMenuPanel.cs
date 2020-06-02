@@ -8,7 +8,7 @@ namespace LB.SuperUI.Sample
     {
         public override void Setup()
         {
-            Debug.Log(gameObject.name + "Setup");
+            Debug.Log(gameObject.name + "Setup()");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace LB.SuperUI.BaseComponents
 
         public override void PreInit()
         {
-
+            
         }
 
         public override void Init()
@@ -26,7 +26,7 @@ namespace LB.SuperUI.BaseComponents
 
         public override void LateInit()
         {
-
+            
         }
 
         public virtual void PlayActivateAnimation()
