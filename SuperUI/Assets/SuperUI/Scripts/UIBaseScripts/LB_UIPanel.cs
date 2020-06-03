@@ -15,6 +15,9 @@ namespace LB.SuperUI.BaseComponents
 
         protected float animationTime;
 
+        protected abstract void RegisterEvents();
+        protected abstract void UnRegisterEvents();
+
         public abstract void Setup();
 
         public override void PreInit()
@@ -33,6 +36,7 @@ namespace LB.SuperUI.BaseComponents
             panelCanvas = GetComponent<Canvas>();
             panelRectTransform = GetComponent<RectTransform>();
 
+            RegisterEvents();
             Setup();
 
             var canvasSize = GetCanvasSize();
@@ -93,6 +97,8 @@ namespace LB.SuperUI.BaseComponents
 
         public void OnDestroyCalled()
         {
+            UnRegisterEvents();
+
             for (int i = 0; i < uIObjects.Length; i++)
             {
                 uIObjects[i].OnUIObjectDestroy();

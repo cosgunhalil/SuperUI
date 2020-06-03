@@ -42,15 +42,29 @@ namespace LB.SuperUI.BaseComponents
             }
         }
 
-        public void Attach(Helpers.Observer.IObserver<UIStateChangedEventArgs> observer)
+        public void Register(Helpers.Observer.IObserver<UIStateChangedEventArgs> observer)
         {
-            UIStateChanged += observer.Syncronize;
+            UIStateChanged += observer.Notify;
         }
 
-        public void Detach(Helpers.Observer.IObserver<UIStateChangedEventArgs> observer)
+        public void UnRegister(Helpers.Observer.IObserver<UIStateChangedEventArgs> observer)
         {
-            UIStateChanged -= observer.Syncronize;
+            UIStateChanged -= observer.Notify;
         }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                CentralEventManager.Instance.GetUIStateEventManager().
+                    AddEvent(new UIStateChangedEventArgs() { State = UIState.MAIN });
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                CentralEventManager.Instance.GetUIStateEventManager().AddEvent(new UIStateChangedEventArgs() { State = UIState.IN_GAME});
+            }
+        }
+
     }
 
 }

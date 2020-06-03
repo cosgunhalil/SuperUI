@@ -5,8 +5,8 @@ namespace LB.SuperUI.Helpers.Observer
 
     public interface ISubject<out T> where T : EventArgs
     {
-        void Attach(IObserver<T> observer);
-        void Detach(IObserver<T> observer);
+        void Register(IObserver<T> observer);
+        void UnRegister(IObserver<T> observer);
     }
 }
 

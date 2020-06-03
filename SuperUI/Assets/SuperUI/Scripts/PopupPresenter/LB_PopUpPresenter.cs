@@ -106,6 +106,16 @@ namespace LB.SuperUI.PopUpSystem
                     break;
             }
         }
+
+        protected override void RegisterEvents()
+        {
+            
+        }
+
+        protected override void UnRegisterEvents()
+        {
+            
+        }
     }
 
 }

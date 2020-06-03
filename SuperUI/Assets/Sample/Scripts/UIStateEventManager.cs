@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class UIStateEventManager : ISubject<UIStateChangedEventArgs>
 {
-    private List<IObserver<UIStateChangedEventArgs>> observers;
+    private List<IObserver<UIStateChangedEventArgs>> observers = new List<IObserver<UIStateChangedEventArgs>>();
     
-    public void Attach(IObserver<UIStateChangedEventArgs> observer)
+    public void Register(IObserver<UIStateChangedEventArgs> observer)
     {
         if (!observers.Contains(observer))
         {
@@ -16,11 +16,19 @@ public class UIStateEventManager : ISubject<UIStateChangedEventArgs>
         }
     }
 
-    public void Detach(IObserver<UIStateChangedEventArgs> observer)
+    public void UnRegister(IObserver<UIStateChangedEventArgs> observer)
     {
         if (observers.Contains(observer))
         {
             observers.Remove(observer);
+        }
+    }
+
+    public void AddEvent(UIStateChangedEventArgs eventArgs)
+    {
+        for (int i = 0; i < observers.Count; i++)
+        {
+            observers[i].Notify(this, eventArgs);
         }
     }
 }

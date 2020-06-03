@@ -9,29 +9,28 @@ public class CentralEventManager
 {
     private static readonly CentralEventManager instance = new CentralEventManager();
 
-    private UIStateEventManager uIStateEventManager;
+    private UIStateEventManager uIStateEventManager = new UIStateEventManager();
 
     static CentralEventManager()
     {
-
+        
     }
 
     private CentralEventManager()
     {
-
+        
     }
 
     public static CentralEventManager Instance
     {
         get
         {
-            instance.Init();
             return instance;
         }
     }
 
-    private void Init()
+    public UIStateEventManager GetUIStateEventManager()
     {
-        uIStateEventManager = new UIStateEventManager();
+        return uIStateEventManager;
     }
 }
