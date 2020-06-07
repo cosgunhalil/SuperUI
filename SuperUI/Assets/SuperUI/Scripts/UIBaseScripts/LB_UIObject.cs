@@ -1,6 +1,7 @@
 ﻿
 namespace LB.SuperUI.BaseComponents 
 {
+    using DG.Tweening;
     using UnityEngine;
 
     public abstract class LB_UIObject : LB_Object
@@ -11,6 +12,9 @@ namespace LB.SuperUI.BaseComponents
 
         protected float animationTime;
         protected float subAnimationTime;
+
+        protected Tweener activationTween;
+        protected Tweener deactivationTween;
 
         public override void PreInit()
         {
@@ -23,20 +27,12 @@ namespace LB.SuperUI.BaseComponents
         }
 
         public abstract void Setup(Vector2 canvasSize);
+        public abstract void PlayActivateAnimation();
+        public abstract void PlayDeactivateAnimation();
 
         public override void LateInit()
         {
             
-        }
-
-        public virtual void PlayActivateAnimation()
-        {
-
-        }
-
-        public virtual void PlayDeactivateAnimation()
-        {
-
         }
 
         public virtual void SetSize(Vector2 size)

@@ -1,26 +1,26 @@
 ﻿<Properties StartupConfiguration="{2071EB85-D389-343D-707F-19405D9A56CB}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SuperUI/Scripts/UIBaseScripts/CentralEventManager.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_Object.cs" Line="13" Column="41" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIPanel.cs" Line="100" Column="32" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIObject.cs" Line="29" Column="13" />
+      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIPanel.cs" Line="94" Column="39" />
+      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIObject.cs" Line="16" Column="43" />
       <File FileName="Assets/SuperUI/Scripts/PopupPresenter/LB_PopUpPresenter.cs" Line="117" Column="13" />
-      <File FileName="Assets/SuperUI/Scripts/PopupPresenter/LB_PopUp.cs" Line="159" Column="15" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_Button.cs" Line="10" Column="33" />
-      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIManager.cs" Line="59" Column="1" />
-      <File FileName="Assets/Sample/Scripts/MainMenuPanel/MainMenuPanel.cs" Line="34" Column="54" />
-      <File FileName="Assets/Sample/Scripts/CommonsPanel/CommonsPanel.cs" Line="39" Column="77" />
-      <File FileName="Assets/Sample/Scripts/MainMenuPanel/ChestContainer.cs" Line="6" Column="37" />
-      <File FileName="Assets/Sample/Scripts/MainMenuPanel/ChestView.cs" Line="6" Column="30" />
+      <File FileName="Assets/SuperUI/Scripts/PopupPresenter/LB_PopUp.cs" Line="164" Column="13" />
+      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_Button.cs" Line="106" Column="13" />
+      <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/LB_UIManager.cs" />
+      <File FileName="Assets/Sample/Scripts/MainMenuPanel/MainMenuPanel.cs" Line="8" Column="46" />
+      <File FileName="Assets/Sample/Scripts/CommonsPanel/CommonsPanel.cs" />
+      <File FileName="Assets/Sample/Scripts/MainMenuPanel/ChestContainer.cs" Line="16" Column="61" />
+      <File FileName="Assets/Sample/Scripts/MainMenuPanel/ChestView.cs" Line="18" Column="13" />
       <File FileName="Assets/SuperUI/Scripts/Helpers/ObserverDesignPattern/IObserver.cs" Line="8" Column="20" />
-      <File FileName="Assets/SuperUI/Scripts/Helpers/ObserverDesignPattern/ISubject.cs" Line="9" Column="24" />
+      <File FileName="Assets/SuperUI/Scripts/Helpers/ObserverDesignPattern/ISubject.cs" />
       <File FileName="Assets/SuperUI/Scripts/UIBaseScripts/CentralEventManager.cs" Line="30" Column="6" />
-      <File FileName="Assets/Sample/Scripts/UIStateEventManager.cs" Line="32" Column="1" />
+      <File FileName="Assets/Sample/Scripts/UIStateEventManager.cs" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b09afbed-5c3a-42ff-82fb-ab6f6d55dccf" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="530b56b5-a674-499d-ad2a-3784ff2751ba" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/halilcosgun/Documents/Projects/SuperUI/SuperUI/Assets/Sample/Scripts/UIStateEventManager.cs" relfile="Assets/Sample/Scripts/UIStateEventManager.cs" line="31" column="1" />

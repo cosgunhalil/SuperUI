@@ -56,7 +56,7 @@ namespace LB.SuperUI.BaseComponents
             }
         }
 
-        public virtual void Activate()
+        public void Activate()
         {
             panelCanvas.enabled = true;
             panelCanvas.sortingOrder = 1;
@@ -64,7 +64,7 @@ namespace LB.SuperUI.BaseComponents
             PlayActivateAnimations();
         }
 
-        public virtual void Deactivate()
+        public void Deactivate()
         {
             StartCoroutine("DeactivateWithAnimation");
         }
