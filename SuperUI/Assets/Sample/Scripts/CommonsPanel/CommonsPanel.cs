@@ -31,12 +31,12 @@ namespace LB.SuperUI.Sample
 
         protected override void RegisterEvents()
         {
-            CentralEventManager.Instance.GetUIStateEventManager().Register(this);
+           
         }
 
         protected override void UnRegisterEvents()
         {
-            CentralEventManager.Instance.GetUIStateEventManager().UnRegister(this);
+           
         }
     }
 }
