@@ -9,21 +9,15 @@ namespace LB.SuperUI.BaseComponents
     public class LB_UIManager : MonoBehaviour, ISubject<UIStateChangedEventArgs>
     {
         public event EventHandler<UIStateChangedEventArgs> UIStateChanged;
+        [SerializeField]
         private LB_UIPanel[] panels;
 
         public void Awake()
         {
-            FindAllPanels();
-
             for (int i = 0; i < panels.Length; ++i)
             {
                 panels[i].PreInit();
             }
-        }
-
-        private void FindAllPanels()
-        {
-            panels = FindObjectsOfType<LB_UIPanel>();
         }
 
         public void Start()

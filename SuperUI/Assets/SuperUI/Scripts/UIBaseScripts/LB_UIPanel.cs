@@ -7,6 +7,7 @@ namespace LB.SuperUI.BaseComponents
 
     public abstract class LB_UIPanel : LB_Object
     {
+        [SerializeField]
         protected LB_UIObject[] uIObjects;
 
         protected UIState panelType;
@@ -22,8 +23,6 @@ namespace LB.SuperUI.BaseComponents
 
         public override void PreInit()
         {
-            uIObjects = transform.GetComponentsInChildren<LB_UIObject>();
-
             for (int i = 0; i < uIObjects.Length; i++)
             {
                 uIObjects[i].PreInit();
