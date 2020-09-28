@@ -16,10 +16,17 @@ namespace LB.SuperUI.BaseComponents
 
         protected float animationTime;
 
+        protected LB_UIManager uiManager;
+
         protected abstract void RegisterEvents();
         protected abstract void UnRegisterEvents();
 
         public abstract void Setup();
+
+        public void InjectDependency(LB_UIManager uiManager) 
+        {
+            this.uiManager = uiManager;
+        }
 
         public override void PreInit()
         {

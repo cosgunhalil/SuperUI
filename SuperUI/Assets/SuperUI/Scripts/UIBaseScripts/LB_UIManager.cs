@@ -16,6 +16,7 @@ namespace LB.SuperUI.BaseComponents
         {
             for (int i = 0; i < panels.Length; ++i)
             {
+                panels[i].InjectDependency(this);
                 panels[i].PreInit();
             }
         }
@@ -44,6 +45,23 @@ namespace LB.SuperUI.BaseComponents
         public void UnRegister(Helpers.Observer.IObserver<UIStateChangedEventArgs> observer)
         {
             UIStateChanged -= observer.Notify;
+        }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                AddEvent(new UIStateChangedEventArgs() { State = UIState.IN_GAME });
+            }
+            else if (Input.GetKeyDown(KeyCode.P)) 
+            {
+                AddEvent(new UIStateChangedEventArgs() { State = UIState.MAIN });
+            }
+        }
+
+        public void AddEvent(UIStateChangedEventArgs eventArgs)
+        {
+            UIStateChanged?.Invoke(this, eventArgs);
         }
 
     }
