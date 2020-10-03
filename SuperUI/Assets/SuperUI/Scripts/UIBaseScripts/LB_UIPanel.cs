@@ -1,7 +1,6 @@
 ﻿
 namespace LB.SuperUI.BaseComponents 
 {
-    using LB.SuperUI.Helpers.Observer;
     using System.Collections;
     using UnityEngine;
     using UnityEngine.UI;
@@ -17,14 +16,14 @@ namespace LB.SuperUI.BaseComponents
 
         protected float animationTime;
 
-        protected ISubject<UIStateChangedEventArgs> uiManager;
+        protected LB_UIManager uiManager;
 
         protected abstract void RegisterEvents();
         protected abstract void UnRegisterEvents();
 
         public abstract void Setup();
 
-        public void InjectDependency(ISubject<UIStateChangedEventArgs> uiManager) 
+        public void InjectDependency(LB_UIManager uiManager) 
         {
             this.uiManager = uiManager;
         }
@@ -43,6 +42,7 @@ namespace LB.SuperUI.BaseComponents
             panelCanvas = GetComponent<Canvas>();
             panelRectTransform = GetComponent<RectTransform>();
 
+            RegisterEvents();
             Setup();
 
             var canvasSize = GetCanvasSize();
@@ -52,8 +52,6 @@ namespace LB.SuperUI.BaseComponents
                 uIObjects[i].Init();
                 uIObjects[i].Setup(canvasSize);
             }
-
-            RegisterEvents();
         }
 
         public override void LateInit()

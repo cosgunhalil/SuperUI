@@ -6,8 +6,7 @@ namespace LB.SuperUI.BaseComponents
         MAIN,
         GAME_OVER,
         IN_GAME,
-        CHARACTERS,
-        OPPONENT_SEARCH
+        CHARACTERS
     }
 }
 
