@@ -7,6 +7,9 @@ namespace LB.SuperUI.Sample
 
     public class MainMenuPanel : LB_UIPanel, IObserver<UIStateChangedEventArgs>
     {
+        [SerializeField]
+        private LB_Button playButton;
+
         public override void Setup()
         {
             Debug.Log(gameObject.name + "Setup()");
@@ -32,11 +35,26 @@ namespace LB.SuperUI.Sample
         protected override void RegisterEvents()
         {
             uiManager.Register(this);
+
+            if (playButton != null) 
+            {
+                playButton.OnPointerDownEvent += PlayButton_OnPointerDownEvent;
+            }
+        }
+
+        private void PlayButton_OnPointerDownEvent()
+        {
+            uiManager.AddEvent(new UIStateChangedEventArgs() { State = UIState.OPPONENT_SEARCH });
         }
 
         protected override void UnRegisterEvents()
         {
             uiManager.UnRegister(this);
+
+            if (playButton != null)
+            {
+                playButton.OnPointerDownEvent -= PlayButton_OnPointerDownEvent;
+            }
         }
     }
 }
