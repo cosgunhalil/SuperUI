@@ -47,18 +47,6 @@ namespace LB.SuperUI.BaseComponents
             UIStateChanged -= observer.Notify;
         }
 
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                AddEvent(new UIStateChangedEventArgs() { State = UIState.IN_GAME });
-            }
-            else if (Input.GetKeyDown(KeyCode.P)) 
-            {
-                AddEvent(new UIStateChangedEventArgs() { State = UIState.MAIN });
-            }
-        }
-
         public void AddEvent(UIStateChangedEventArgs eventArgs)
         {
             UIStateChanged?.Invoke(this, eventArgs);
