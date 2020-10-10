@@ -6,7 +6,7 @@ namespace LB.SuperUI.Sample
     using LB.SuperUI.Helpers.Observer;
     using UnityEngine;
 
-    public class CommonsPanel : LB_UIPanel, IObserver<UIStateChangedEventArgs>
+    public class CommonsPanel : LB_UIPanel
     {
         [SerializeField]
         private LB_Button mainMenuButton;
@@ -22,24 +22,8 @@ namespace LB.SuperUI.Sample
             Debug.Log(gameObject.name + "Setup");
         }
 
-        public void Notify(object sender, UIStateChangedEventArgs e)
-        {
-            switch (e.State)
-            {
-                case UIState.IN_GAME:
-                case UIState.MAIN:
-                case UIState.GAME_OVER:
-                case UIState.CHARACTERS:
-                default:
-                    panelCanvas.enabled = true;
-                    break;
-            }
-        }
-
         protected override void RegisterEvents()
         {
-            uiManager.Register(this);
-
             if (mainMenuButton != null) 
             {
                 mainMenuButton.OnPointerDownEvent += MainMenuButton_OnPointerDownEvent;
@@ -49,26 +33,58 @@ namespace LB.SuperUI.Sample
             {
                 charactersButton.OnPointerDownEvent += CharactersButton_OnPointerDownEvent;
             }
-        }
 
-        private void CharactersButton_OnPointerDownEvent()
-        {
-            uiManager.AddEvent(new UIStateChangedEventArgs() { State = UIState.IN_GAME });
+            if (marketButton != null) 
+            {
+                marketButton.OnPointerDownEvent += MarketButton_OnPointerDownEvent;
+            }
+
+            if (eventsButton != null) 
+            {
+                eventsButton.OnPointerDownEvent += EventsButton_OnPointerDownEvent;
+            }
         }
 
         private void MainMenuButton_OnPointerDownEvent()
         {
-            uiManager.AddEvent(new UIStateChangedEventArgs() { State = UIState.MAIN });
+            uiManager.AddEvent(new UIStateChangedEventArgs() { State = UIState.MAIN_MENU });
+        }
+        private void CharactersButton_OnPointerDownEvent()
+        {
+            uiManager.AddEvent(new UIStateChangedEventArgs() { State = UIState.CHARACTERS });
+        }
+
+        private void MarketButton_OnPointerDownEvent()
+        {
+            uiManager.AddEvent(new UIStateChangedEventArgs() { State = UIState.MARKET });
+        }
+
+        private void EventsButton_OnPointerDownEvent()
+        {
+            uiManager.AddEvent(new UIStateChangedEventArgs() { State = UIState.EVENTS });
         }
 
         protected override void UnRegisterEvents()
         {
-            uiManager.UnRegister(this);
-            if (mainMenuButton != null) 
+            if (mainMenuButton != null)
             {
                 mainMenuButton.OnPointerDownEvent -= MainMenuButton_OnPointerDownEvent;
             }
-            
+
+            if (charactersButton != null)
+            {
+                charactersButton.OnPointerDownEvent -= CharactersButton_OnPointerDownEvent;
+            }
+
+            if (marketButton != null)
+            {
+                marketButton.OnPointerDownEvent -= MarketButton_OnPointerDownEvent;
+            }
+
+            if (eventsButton != null)
+            {
+                eventsButton.OnPointerDownEvent -= EventsButton_OnPointerDownEvent;
+            }
         }
     }
 }
