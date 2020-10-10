@@ -3,11 +3,10 @@ namespace LB.SuperUI.BaseComponents
 {
     public enum UIState
     {
-        MAIN,
-        GAME_OVER,
-        IN_GAME,
+        MAIN_MENU,
         CHARACTERS,
-        OPPONENT_SEARCH
+        MARKET,
+        EVENTS
     }
 }
 
