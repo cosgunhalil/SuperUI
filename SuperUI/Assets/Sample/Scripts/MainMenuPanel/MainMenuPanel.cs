@@ -18,18 +18,7 @@ namespace LB.SuperUI.Sample
 
         public void Notify(object sender, UIStateChangedEventArgs e)
         {
-            switch (e.State)
-            {
-                case UIState.MAIN:
-                    panelCanvas.enabled = true;
-                    break;
-                case UIState.GAME_OVER:
-                case UIState.IN_GAME:
-                case UIState.CHARACTERS:
-                default:
-                    panelCanvas.enabled = false;
-                    break;
-            }
+            panelCanvas.enabled = e.State == UIState.MAIN_MENU;
         }
 
         protected override void RegisterEvents()
@@ -44,7 +33,7 @@ namespace LB.SuperUI.Sample
 
         private void PlayButton_OnPointerDownEvent()
         {
-            uiManager.AddEvent(new UIStateChangedEventArgs() { State = UIState.OPPONENT_SEARCH });
+            //Todo send onclick event of play button
         }
 
         protected override void UnRegisterEvents()
