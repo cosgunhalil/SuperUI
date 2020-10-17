@@ -8,7 +8,14 @@ public class CharactersPanel : LB_UIPanel, IObserver<UIStateChangedEventArgs>
 {
     public void Notify(object sender, UIStateChangedEventArgs e)
     {
-        panelCanvas.enabled = e.State == UIState.CHARACTERS;
+        if (e.State == UIState.CHARACTERS)
+        {
+            Activate();
+        }
+        else
+        {
+            Deactivate();
+        }
     }
 
     public override void Setup()
