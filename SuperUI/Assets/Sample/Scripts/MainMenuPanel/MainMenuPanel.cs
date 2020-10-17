@@ -13,12 +13,23 @@ namespace LB.SuperUI.Sample
         public override void Setup()
         {
             Debug.Log(gameObject.name + "Setup()");
-            
+        }
+
+        public override void LateInit()
+        {
+            uiManager.AddEvent(new UIStateChangedEventArgs() {State = UIState.MAIN_MENU});
         }
 
         public void Notify(object sender, UIStateChangedEventArgs e)
         {
-            panelCanvas.enabled = e.State == UIState.MAIN_MENU;
+            if (e.State == UIState.MAIN_MENU)
+            {
+                Activate();
+            }
+            else
+            {
+                Deactivate();
+            }
         }
 
         protected override void RegisterEvents()
