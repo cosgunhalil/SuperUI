@@ -8,7 +8,14 @@ public class EventsPanel : LB_UIPanel, IObserver<UIStateChangedEventArgs>
 {
     public void Notify(object sender, UIStateChangedEventArgs e)
     {
-        panelCanvas.enabled = e.State == UIState.EVENTS;
+        if (e.State == UIState.EVENTS) 
+        {
+            Activate();
+        }
+        else
+        {
+            Deactivate();
+        }
     }
     public override void Setup()
     {
