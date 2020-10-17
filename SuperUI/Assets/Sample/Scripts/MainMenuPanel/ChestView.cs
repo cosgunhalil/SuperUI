@@ -10,14 +10,4 @@ public class ChestView : LB_UIObject
     {
         Debug.Log("<color=red>" + gameObject.name + "</color>");
     }
-
-    public override void PlayActivateAnimation()
-    {
-
-    }
-
-    public override void PlayDeactivateAnimation()
-    {
-
-    }
 }
