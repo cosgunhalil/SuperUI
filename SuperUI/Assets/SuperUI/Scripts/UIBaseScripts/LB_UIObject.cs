@@ -10,15 +10,16 @@ namespace LB.SuperUI.BaseComponents
         protected Vector2 activatedCoordinate;
         protected Vector2 deactivtedCoordinate;
 
-        protected float animationTime;
         protected float subAnimationTime;
 
         protected Tweener activationTween;
         protected Tweener deactivationTween;
 
+        private float animationTime;
+
         public override void PreInit()
         {
-            
+            animationTime = .5f;
         }
 
         public override void Init()
@@ -27,8 +28,27 @@ namespace LB.SuperUI.BaseComponents
         }
 
         public abstract void Setup(Vector2 canvasSize);
-        public abstract void PlayActivateAnimation();
-        public abstract void PlayDeactivateAnimation();
+        public void PlayActivateAnimation() 
+        {
+            if (objectRectTransform == null) 
+            {
+                Debug.LogError("Object transfor is null!" + gameObject.name);
+                return;
+            }
+
+            objectRectTransform.DOAnchorPos(activatedCoordinate, animationTime).SetEase(Ease.InOutSine);
+        }
+
+        public void PlayDeactivateAnimation()
+        {
+            if (objectRectTransform == null)
+            {
+                Debug.LogError("Object transfor is null!" + gameObject.name);
+                return;
+            }
+
+            objectRectTransform.DOAnchorPos(deactivtedCoordinate, animationTime).SetEase(Ease.InOutSine);
+        }
 
         public override void LateInit()
         {
