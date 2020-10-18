@@ -158,16 +158,6 @@
         {
             //
         }
-
-        public override void PlayActivateAnimation()
-        {
-            
-        }
-
-        public override void PlayDeactivateAnimation()
-        {
-            
-        }
     }
 
     public enum PopUpResponseType
