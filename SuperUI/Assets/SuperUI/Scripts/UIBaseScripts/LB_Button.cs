@@ -95,16 +95,6 @@ namespace LB.SuperUI.BaseComponents
         {
             
         }
-
-        public override void PlayActivateAnimation()
-        {
-            
-        }
-
-        public override void PlayDeactivateAnimation()
-        {
-            
-        }
     }
 
 }
