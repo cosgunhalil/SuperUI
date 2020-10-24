@@ -2,19 +2,20 @@
 namespace LB.SuperUI.BaseComponents 
 {
     using DG.Tweening;
+    using LB.SuperUI.Animation;
+    using System.Collections;
+    using System.Collections.Generic;
     using UnityEngine;
 
     public abstract class LB_UIObject : LB_Object
     {
         protected RectTransform objectRectTransform;
-        protected Vector2 activatedCoordinate;
-        protected Vector2 deactivtedCoordinate;
 
         protected float subAnimationTime;
 
-        protected Tweener activationTween;
-        protected Tweener deactivationTween;
+        protected List<IAnimable> animationComponents;
 
+        // https://github.com/cosgunhalil/SuperUI/projects/1#card-48000651
         private float animationTime;
 
         public override void PreInit()
@@ -24,6 +25,7 @@ namespace LB.SuperUI.BaseComponents
 
         public override void Init()
         {
+            animationComponents = new List<IAnimable>();
             objectRectTransform = GetComponent<RectTransform>();
         }
 
@@ -36,7 +38,10 @@ namespace LB.SuperUI.BaseComponents
                 return;
             }
 
-            objectRectTransform.DOAnchorPos(activatedCoordinate, animationTime).SetEase(Ease.InOutSine);
+            foreach (var animationComponent in animationComponents)
+            {
+                animationComponent.PlayForward();
+            }
         }
 
         public void PlayDeactivateAnimation()
@@ -47,7 +52,11 @@ namespace LB.SuperUI.BaseComponents
                 return;
             }
 
-            objectRectTransform.DOAnchorPos(deactivtedCoordinate, animationTime).SetEase(Ease.InOutSine);
+            foreach (var animationComponent in animationComponents)
+            {
+                animationComponent.PlayRewind();
+            }
+
         }
 
         public override void LateInit()
