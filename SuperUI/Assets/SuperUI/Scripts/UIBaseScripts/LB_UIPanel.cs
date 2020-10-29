@@ -2,6 +2,7 @@
 namespace LB.SuperUI.BaseComponents 
 {
     using LB.SuperUI.Helpers.Observer;
+    using System;
     using System.Collections;
     using UnityEngine;
     using UnityEngine.UI;
@@ -15,7 +16,7 @@ namespace LB.SuperUI.BaseComponents
         protected Canvas panelCanvas;
         protected RectTransform panelRectTransform;
 
-        protected float animationTime;
+        protected const float animationTime = .5f;
 
         protected ISubject<UIStateChangedEventArgs> uiManager;
 
@@ -31,15 +32,24 @@ namespace LB.SuperUI.BaseComponents
 
         public override void PreInit()
         {
+            SetAnimationTime(animationTime);
+
             for (int i = 0; i < uIObjects.Length; i++)
             {
                 uIObjects[i].PreInit();
             }
         }
 
+        private void SetAnimationTime(float animationTime)
+        {
+            for (int i = 0; i < uIObjects.Length; i++)
+            {
+                uIObjects[i].SetAnimationTime(animationTime);
+            }
+        }
+
         public override void Init()
         {
-            animationTime = .5f;
             panelCanvas = GetComponent<Canvas>();
             panelRectTransform = GetComponent<RectTransform>();
 

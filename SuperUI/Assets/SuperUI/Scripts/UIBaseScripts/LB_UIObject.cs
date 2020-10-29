@@ -11,16 +11,13 @@ namespace LB.SuperUI.BaseComponents
     {
         protected RectTransform objectRectTransform;
 
-        protected float subAnimationTime;
-
         protected List<IAnimable> animationComponents;
 
-        // https://github.com/cosgunhalil/SuperUI/projects/1#card-48000651
         private float animationTime;
 
         public override void PreInit()
         {
-            animationTime = .5f;
+            
         }
 
         public override void Init()
