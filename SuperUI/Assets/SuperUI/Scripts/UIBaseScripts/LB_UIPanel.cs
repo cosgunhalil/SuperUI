@@ -24,7 +24,7 @@ namespace LB.SuperUI.BaseComponents
 
         public abstract void Setup();
 
-        public void InjectDependency(ISubject<UIStateChangedEventArgs> uiManager) 
+        public void InjectUIManagerDependency(ISubject<UIStateChangedEventArgs> uiManager) 
         {
             this.uiManager = uiManager;
         }

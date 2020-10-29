@@ -16,7 +16,7 @@ namespace LB.SuperUI.BaseComponents
         {
             for (int i = 0; i < panels.Length; ++i)
             {
-                panels[i].InjectDependency(this);
+                panels[i].InjectUIManagerDependency(this);
                 panels[i].PreInit();
             }
         }
