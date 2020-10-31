@@ -7,6 +7,7 @@ namespace LB.SuperUI.BaseComponents
     using UnityEngine;
     using UnityEngine.UI;
 
+    [RequireComponent(typeof(Canvas))]
     public abstract class LB_UIPanel : LB_Object
     {
         [SerializeField]
