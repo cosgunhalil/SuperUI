@@ -63,6 +63,15 @@ public class LB_SceneCreator
 
     private void CreatePanel(string panelName)
     {
+        //TODO: read from json
+        //Create gameObjects in Unity Scene
+        //Generate codes and attach them to this gameObjects
         //TODO: code generation
+        //Panel
+        //name , UIOBjects array
+        //{name, position}
+
+        var panel = new GameObject(panelName).AddComponent<LB_UIPanel>();
+
     }
 }
