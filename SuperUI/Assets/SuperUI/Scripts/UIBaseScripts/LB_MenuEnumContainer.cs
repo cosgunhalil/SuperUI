@@ -6,7 +6,8 @@ namespace LB.SuperUI.BaseComponents
         MAIN_MENU,
         CHARACTERS,
         MARKET,
-        EVENTS
+        EVENTS,
+        OPPONENT_SEARCH
     }
 }
 
