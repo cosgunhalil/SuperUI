@@ -1,4 +1,5 @@
 ﻿using LB.SuperUI.BaseComponents;
+using LB.SuperUI.Editor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ public class LB_SuperUI_Editor : EditorWindow
     public static LB_SuperUI_Editor editorWindow;
     private Rect MainEditorPanelRect = new Rect(100, 100, 200, 200);
     private Rect EnumsWindowRect = new Rect(100, 100, 200, 200);
+    private Rect UIJsonCreatorWindowRect = new Rect(200, 100, 200, 200);
 
     private Vector2 scrollPosition;
     private LB_EnumCreator enumCreator;
@@ -53,6 +55,7 @@ public class LB_SuperUI_Editor : EditorWindow
         BeginWindows();
         MainEditorPanelRect = GUILayout.Window(1, MainEditorPanelRect, DoMainEditorWindow, "Main Editor Panel");
         EnumsWindowRect = GUILayout.Window(2, EnumsWindowRect, DoEnumsWindow, "Enums");
+        UIJsonCreatorWindowRect = GUILayout.Window(3, UIJsonCreatorWindowRect, DoJsonCreatorWindow, "UI Json Creator");
         EndWindows();
 
         GUI.EndScrollView();
@@ -203,5 +206,40 @@ public class LB_SuperUI_Editor : EditorWindow
         var manager = new GameObject("UIManager").AddComponent<LB_UIManager>();
         manager.transform.position = Vector3.zero;
         manager.gameObject.isStatic = true;
+    }
+
+    private void DoJsonCreatorWindow(int id)
+    {
+        if (GUILayout.Button("Test Json Template"))
+        {
+
+            var mainMenuPanelUIObjectsData = new UIObjectJsonData[]{
+
+                new UIObjectJsonData() { Name = "Play Button" },
+                new UIObjectJsonData() { Name = "Market Button "},
+                new UIObjectJsonData() { Name = "Characters Button "}
+
+            };
+
+            var mainMenuPanelJsonData = new PanelJsonData[] {
+
+                new PanelJsonData(){
+                    Name = "Main Menu Panel",
+                    uIObjectJsonDatas = mainMenuPanelUIObjectsData
+                }
+
+            };
+
+            SceneJsonData sceneJsonData = new SceneJsonData()
+            {
+                UIManagerName = "UI Manager",
+                panelJsonData = mainMenuPanelJsonData
+            };
+
+            var json = JsonUtility.ToJson(sceneJsonData);
+            Debug.Log(json);
+        }
+
+        GUI.DragWindow();
     }
 }
