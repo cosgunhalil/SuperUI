@@ -3,7 +3,10 @@ using LB.SuperUI.Editor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class LB_SuperUI_Editor : EditorWindow
@@ -19,12 +22,17 @@ public class LB_SuperUI_Editor : EditorWindow
 
     private string sceneName;
 
+    private string panelName;
+    private SceneJsonData sceneJsonData;
+
     private void Awake()
     {
         if (editorWindow == null)
         {
             CreateEditorWindow();
         }
+
+        sceneJsonData = new SceneJsonData();
 
         enumCreator = new LB_EnumCreator();
         enumCreator.Init();
@@ -210,36 +218,196 @@ public class LB_SuperUI_Editor : EditorWindow
 
     private void DoJsonCreatorWindow(int id)
     {
-        if (GUILayout.Button("Test Json Template"))
-        {
-
-            var mainMenuPanelUIObjectsData = new UIObjectJsonData[]{
-
-                new UIObjectJsonData() { Name = "Play Button" },
-                new UIObjectJsonData() { Name = "Market Button "},
-                new UIObjectJsonData() { Name = "Characters Button "}
-
-            };
-
-            var mainMenuPanelJsonData = new PanelJsonData[] {
-
-                new PanelJsonData(){
-                    Name = "Main Menu Panel",
-                    uIObjectJsonDatas = mainMenuPanelUIObjectsData
-                }
-
-            };
-
-            SceneJsonData sceneJsonData = new SceneJsonData()
-            {
-                UIManagerName = "UI Manager",
-                panelJsonData = mainMenuPanelJsonData
-            };
-
-            var json = JsonUtility.ToJson(sceneJsonData);
-            Debug.Log(json);
-        }
+        CreatePanelButton();
+        RenderSceneJsonData();
 
         GUI.DragWindow();
+    }
+
+    private void CreatePanelButton()
+    {
+        GUILayout.Label("Current Panel Name");
+        panelName = GUILayout.TextField(panelName);
+
+        if (GUILayout.Button("Create Panel")) 
+        {
+            PanelJsonData panelJsonData = new PanelJsonData() { Name = panelName };
+            sceneJsonData.AddPanelData(panelJsonData);
+
+        }
+    }
+
+    private void RenderSceneJsonData()
+    {
+        GUILayout.Space(5);
+
+        var panelDataList = sceneJsonData.GetPanelDataList();
+        GUILayout.Label("Panels");
+
+        for (int i = 0; i < panelDataList.Count; i++)
+        {
+            RenderPanelData(panelDataList, i);
+        }
+
+        CreateLoadMetaButton();
+        CreateSaveMetaButton();
+        CreateGenerateSceneButton();
+    }
+
+    private void RenderPanelData(List<PanelJsonData> panelDataList, int i)
+    {
+        GUILayout.BeginHorizontal();
+
+        GUILayout.TextArea(panelDataList[i].Name);
+
+        GUI.color = Color.red;
+
+        if (GUILayout.Button("Delete"))
+        {
+            sceneJsonData.RemovePanelData(i);
+        }
+
+        GUI.color = Color.white;
+
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+
+        if (GUILayout.Button("Add UIObject"))
+        {
+            panelDataList[i].AddUIObject(new UIObjectJsonData() { Name = "default object" });
+        }
+
+
+        GUILayout.EndHorizontal();
+
+        if (i < panelDataList.Count)
+        {
+            RenderPanelDataUIObjects(panelDataList[i].GetUIObjectList());
+        }
+
+        GUILayout.Label("------");
+        GUILayout.Space(10);
+    }
+
+    private void RenderPanelDataUIObjects(List<UIObjectJsonData> uiObjectList)
+    {
+        GUILayout.Label("UI Objects");
+
+        GUILayout.BeginVertical();
+
+        for (int i = 0; i < uiObjectList.Count; i++)
+        {
+            uiObjectList[i].Name = GUILayout.TextField(uiObjectList[i].Name);
+        }
+
+        GUILayout.EndVertical();
+    }
+
+    private void CreateLoadMetaButton()
+    {
+        if (GUILayout.Button("Load"))
+        {
+            string path = Application.dataPath + "/sceneUIMeta.data";
+            FileStream fileStream;
+
+            if (File.Exists(path))
+            {
+                fileStream = File.OpenRead(path);
+            }
+            else
+            {
+                Debug.LogError("There is now meta file in here! (path = " + path + ")");
+                return;
+            }
+
+            var binaryFormatter = new BinaryFormatter();
+
+            var dataString = binaryFormatter.Deserialize(fileStream) as string;
+
+            sceneJsonData = JsonUtility.FromJson<SceneJsonData>(dataString);
+
+            fileStream.Close();
+        }
+    }
+
+    private void CreateSaveMetaButton()
+    {
+        if (GUILayout.Button("Save"))
+        {
+            string path = Application.dataPath + "/sceneUIMeta.data";
+            FileStream fileStream;
+
+            if (File.Exists(path))
+            {
+                fileStream = File.OpenWrite(path);
+            }
+            else
+            {
+                fileStream = File.Create(path);
+            }
+
+            var data = JsonUtility.ToJson(sceneJsonData);
+            var binaryFormatter = new BinaryFormatter();
+            binaryFormatter.Serialize(fileStream, data);
+
+            fileStream.Close();
+
+            Debug.Log(path);
+            Debug.Log(JsonUtility.ToJson(sceneJsonData));
+        }
+    }
+
+    private void CreateGenerateSceneButton()
+    {
+        if (GUILayout.Button("Generate Scene")) 
+        {
+            GenerateScene("Main");
+            GenerateUIManager(sceneJsonData.UIManagerName);
+            SetupPanels(sceneJsonData.GetPanelDataList());
+        }
+    }
+
+    private void GenerateUIManager(string uIManagerName)
+    {
+        new GameObject(uIManagerName).AddComponent<LB_UIManager>();
+    }
+
+    private void GenerateScene(string sceneName)
+    {
+        EditorSceneManager.NewScene(new NewSceneSetup(), NewSceneMode.Single);
+        var activeScene = EditorSceneManager.GetActiveScene();
+        activeScene.name = sceneName;
+
+        var camera = new GameObject("Main Camera").AddComponent<Camera>();
+        camera.orthographic = true;
+
+    }
+
+    private void SetupPanels(List<PanelJsonData> panelList)
+    {
+        for (int i = 0; i < panelList.Count; i++)
+        {
+            CreatePanel(panelList[i]);
+        }
+    }
+
+    private void CreatePanel(PanelJsonData panelJsonData)
+    {
+        var panelObject = new GameObject(panelJsonData.Name);
+        SetupPanelUIObjects(panelObject, panelJsonData.GetUIObjectList());
+    }
+
+    private void SetupPanelUIObjects(GameObject panelObject, List<UIObjectJsonData> uiObjectList)
+    {
+        for (int i = 0; i < uiObjectList.Count; i++)
+        {
+            var uiObject = CreateUIObject(uiObjectList[i]);
+            uiObject.transform.SetParent(panelObject.transform);
+        }
+    }
+    private GameObject CreateUIObject(UIObjectJsonData uIObjectJsonData)
+    {
+        return new GameObject(uIObjectJsonData.Name);
     }
 }
