@@ -5,6 +5,8 @@ using UnityEditor;
 using System;
 using System.IO;
 using LB.SuperUI.BaseComponents;
+using System.Text;
+using LB.Helper.FileHandler;
 
 public class LB_EnumCreator{
 
@@ -35,6 +37,7 @@ public class LB_EnumCreator{
         return currentEnums;
     }
 
+    //TODO: Move!!!!
     private void CreateManagerScript(string className)
     {
         var templateLocation = Application.dataPath + "/Scripts/CodeTemplates/UIManagerTemplate.txt";
@@ -80,20 +83,13 @@ public class LB_EnumCreator{
 
     public void CreateEnumContainerScript(string saveLocation)
     {
-        string classContent = string.Empty;
-        classContent += "public enum PanelType" + Environment.NewLine;
 
-        classContent += "{" + Environment.NewLine;
+        //TODO: read template file from location
+        //TODO: change template then save file!
 
-        for (int i = 0; i < enums.Count - 1; i++)
-        {
-            classContent += "    " + enums[i] + "," + Environment.NewLine;
-        }
+        LB_Writer writer = new LB_Writer();
+        writer.Write(saveLocation, "public class TestClass{}");
 
-        classContent += "    " + enums[enums.Count - 1] + Environment.NewLine;
-        classContent += "}" + Environment.NewLine;
-
-        File.WriteAllText(saveLocation, classContent);
         AssetDatabase.Refresh();
     }
 
@@ -129,7 +125,8 @@ public class LB_EnumCreator{
 
     public void SaveEnums()
     {
-        var saveLocation = Application.dataPath + enumContainerPath;
+        //var saveLocation = Application.dataPath + enumContainerPath;
+        var saveLocation = Application.dataPath + "/sampleGeneratedCode.cs";
         CreateEnumContainerScript(saveLocation);
     }
 }
