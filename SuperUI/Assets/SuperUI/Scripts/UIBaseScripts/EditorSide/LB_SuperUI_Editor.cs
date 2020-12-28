@@ -1,10 +1,7 @@
-﻿using LB.SuperUI.BaseComponents;
+﻿using LB.Helper.FileHandler;
+using LB.SuperUI.BaseComponents;
 using LB.SuperUI.Editor;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -64,10 +61,33 @@ public class LB_SuperUI_Editor : EditorWindow
         MainEditorPanelRect = GUILayout.Window(1, MainEditorPanelRect, DoMainEditorWindow, "Main Editor Panel");
         EnumsWindowRect = GUILayout.Window(2, EnumsWindowRect, DoEnumsWindow, "Enums");
         UIJsonCreatorWindowRect = GUILayout.Window(3, UIJsonCreatorWindowRect, DoJsonCreatorWindow, "UI Json Creator");
+
+        Rect clickArea = EditorGUILayout.GetControlRect();
+        Event current = Event.current;
+
+        if (clickArea.Contains(current.mousePosition) && current.type == EventType.ContextClick)
+        {
+            //Do a thing, in this case a drop down menu
+
+            GenericMenu menu = new GenericMenu();
+
+            menu.AddDisabledItem(new GUIContent("I clicked on a thing"));
+            menu.AddItem(new GUIContent("Do a thing"), false, YourCallback);
+            menu.ShowAsContext();
+
+            current.Use();
+        }
+
+
         EndWindows();
 
         GUI.EndScrollView();
 
+    }
+
+    void YourCallback()
+    {
+        Debug.Log("Hi there");
     }
 
     private void DoMainEditorWindow(int id)
@@ -309,25 +329,10 @@ public class LB_SuperUI_Editor : EditorWindow
         if (GUILayout.Button("Load"))
         {
             string path = Application.dataPath + "/sceneUIMeta.data";
-            FileStream fileStream;
 
-            if (File.Exists(path))
-            {
-                fileStream = File.OpenRead(path);
-            }
-            else
-            {
-                Debug.LogError("There is now meta file in here! (path = " + path + ")");
-                return;
-            }
+            LB_Loader loader = new LB_Loader();
+            sceneJsonData = loader.Load<SceneJsonData>(path);
 
-            var binaryFormatter = new BinaryFormatter();
-
-            var dataString = binaryFormatter.Deserialize(fileStream) as string;
-
-            sceneJsonData = JsonUtility.FromJson<SceneJsonData>(dataString);
-
-            fileStream.Close();
         }
     }
 
@@ -336,22 +341,11 @@ public class LB_SuperUI_Editor : EditorWindow
         if (GUILayout.Button("Save"))
         {
             string path = Application.dataPath + "/sceneUIMeta.data";
-            FileStream fileStream;
 
-            if (File.Exists(path))
-            {
-                fileStream = File.OpenWrite(path);
-            }
-            else
-            {
-                fileStream = File.Create(path);
-            }
+            LB_Writer writer = new LB.Helper.FileHandler.LB_Writer();
 
-            var data = JsonUtility.ToJson(sceneJsonData);
-            var binaryFormatter = new BinaryFormatter();
-            binaryFormatter.Serialize(fileStream, data);
-
-            fileStream.Close();
+            string path1 = Application.dataPath + "/testJson.txt";
+            writer.Write<SceneJsonData>(sceneJsonData, path);
 
             Debug.Log(path);
             Debug.Log(JsonUtility.ToJson(sceneJsonData));
@@ -406,6 +400,7 @@ public class LB_SuperUI_Editor : EditorWindow
             uiObject.transform.SetParent(panelObject.transform);
         }
     }
+
     private GameObject CreateUIObject(UIObjectJsonData uIObjectJsonData)
     {
         return new GameObject(uIObjectJsonData.Name);
