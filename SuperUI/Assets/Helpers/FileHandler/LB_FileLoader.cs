@@ -1,4 +1,6 @@
 ﻿
+//TODO: refactor - seperate binary and pure loader
+//TODO: Apply Decorator Design Pattern
 namespace LB.Helper.FileHandler 
 {
     using System.Collections;
@@ -9,13 +11,7 @@ namespace LB.Helper.FileHandler
 
     public class LB_Loader
     {
-        public T Load<T>(string path)
-        {
-            var data = ReadDataFromPath(path);
-            return JsonUtility.FromJson<T>(data);
-        }
-
-        public string ReadDataFromPath(string path)
+        public string Load(string path)
         {
             string data = null;
             try
@@ -24,12 +20,8 @@ namespace LB.Helper.FileHandler
                 {
                     using (StreamReader reader = new StreamReader(fileStream))
                     {
-                        var binaryFormatter = new BinaryFormatter();
-                        var dataString = binaryFormatter.Deserialize(fileStream) as string;
-
                         data = reader.ReadToEnd();
-
-                        return dataString;
+                        return data;
                     }
                 }
             }
@@ -41,6 +33,4 @@ namespace LB.Helper.FileHandler
             return data;
         }
     }
-
 }
-
