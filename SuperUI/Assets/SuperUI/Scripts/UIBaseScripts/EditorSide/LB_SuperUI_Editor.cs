@@ -331,7 +331,8 @@ public class LB_SuperUI_Editor : EditorWindow
             string path = Application.dataPath + "/sceneUIMeta.data";
 
             LB_Loader loader = new LB_Loader();
-            sceneJsonData = loader.Load<SceneJsonData>(path);
+            var sceneDataString = loader.Load(path);
+            sceneJsonData = JsonUtility.FromJson<SceneJsonData>(sceneDataString);
 
         }
     }
@@ -342,10 +343,7 @@ public class LB_SuperUI_Editor : EditorWindow
         {
             string path = Application.dataPath + "/sceneUIMeta.data";
 
-            LB_Writer writer = new LB.Helper.FileHandler.LB_Writer();
-
-            string path1 = Application.dataPath + "/testJson.txt";
-            writer.Write<SceneJsonData>(sceneJsonData, path);
+            new LB_Writer().Write(JsonUtility.ToJson(sceneJsonData), path);
 
             Debug.Log(path);
             Debug.Log(JsonUtility.ToJson(sceneJsonData));
