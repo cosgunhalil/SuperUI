@@ -6,13 +6,7 @@ namespace LB.Helper.FileHandler
     using UnityEngine;
     public class LB_Writer
     {
-        public void Write<T>(T dataObject, string path)
-        {
-            var data = JsonUtility.ToJson(dataObject);
-            Write(path, data);
-        }
-
-        public void Write(string saveLocation, string content)
+        public void Write(string content, string saveLocation)
         {
             try
             {
@@ -20,8 +14,6 @@ namespace LB.Helper.FileHandler
                 {
                     using (StreamWriter writer = new StreamWriter(fileStream))
                     {
-                        var binaryFormatter = new BinaryFormatter();
-                        binaryFormatter.Serialize(fileStream, content);
                         writer.Write(content);
                     }
                 }
