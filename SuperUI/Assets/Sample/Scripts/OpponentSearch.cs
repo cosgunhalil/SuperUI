@@ -15,19 +15,12 @@ public class OpponentSearch : LB_UIPanel, IObserver<UIStateChangedEventArgs>
 
         public override void LateInit()
         {
-            uiManager.AddEvent(new UIStateChangedEventArgs() { State = UIState.OPPONENT_SEARCH });
+           
         }
 
         public void Notify(object sender, UIStateChangedEventArgs e)
         {
-            if (e.State == UIState.OPPONENT_SEARCH )
-            {
-                Activate();
-            }
-            else
-            {
-                Deactivate();
-            }
+            
         }
 
         protected override void RegisterEvents()
