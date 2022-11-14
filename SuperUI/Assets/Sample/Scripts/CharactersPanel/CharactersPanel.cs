@@ -1,35 +1,13 @@
-﻿using LB.SuperUI.BaseComponents;
-using LB.SuperUI.Helpers.Observer;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CharactersPanel : LB_UIPanel, IObserver<UIStateChangedEventArgs>
+﻿namespace VoxelPixel.SampleApp.UI 
 {
-    public void Notify(object sender, UIStateChangedEventArgs e)
+    using LB.SuperUI.BaseComponents;
+    using UnityEngine;
+
+    public class CharactersPanel : LB_UIPanel
     {
-        if (e.State == UIState.CHARACTERS)
+        public override void Setup()
         {
-            Activate();
+            Debug.Log(gameObject.name + "Setup()");
         }
-        else
-        {
-            Deactivate();
-        }
-    }
-
-    public override void Setup()
-    {
-        Debug.Log(gameObject.name + "Setup()");
-    }
-
-    protected override void RegisterEvents()
-    {
-        uiManager.Register(this);
-    }
-
-    protected override void UnRegisterEvents()
-    {
-        uiManager.UnRegister(this);
     }
 }

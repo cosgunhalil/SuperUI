@@ -1,4 +1,3 @@
-
 namespace LB.SuperUI.BaseComponents
 {
     public enum UIState
@@ -7,7 +6,8 @@ namespace LB.SuperUI.BaseComponents
         CHARACTERS,
         MARKET,
         EVENTS,
-        OPPONENT_SEARCH
+        COMMONS,
+        COUNT
     }
 }
 

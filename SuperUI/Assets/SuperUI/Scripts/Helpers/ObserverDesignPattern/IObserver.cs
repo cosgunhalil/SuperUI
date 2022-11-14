@@ -1,5 +1,4 @@
-﻿
-namespace LB.SuperUI.Helpers.Observer
+﻿namespace LB.SuperUI.Helpers.Observer
 {
     using System;
 
