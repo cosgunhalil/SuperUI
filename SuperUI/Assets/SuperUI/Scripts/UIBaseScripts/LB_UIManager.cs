@@ -1,16 +1,13 @@
 ﻿
 namespace LB.SuperUI.BaseComponents 
 {
-    using System;
     using System.Collections;
-    using System.Collections.Generic;
-    using LB.SuperUI.Helpers.Observer;
     using LB.SuperUI.Sample;
     using UnityEngine;
+    using VoxelPixel.SampleApp.UI;
 
-    public class LB_UIManager : MonoBehaviour, ISubject<UIStateChangedEventArgs>
+    public class LB_UIManager : MonoBehaviour
     {
-        public event EventHandler<UIStateChangedEventArgs> UIStateChanged;
         private LB_UIPanel[] panels;
 
         [SerializeField] 
@@ -37,7 +34,6 @@ namespace LB.SuperUI.BaseComponents
 
             for (int i = 0; i < panels.Length; ++i)
             {
-                panels[i].InjectUIManagerDependency(this);
                 panels[i].PreInit();
             }
         }
@@ -90,8 +86,13 @@ namespace LB.SuperUI.BaseComponents
                 return;
             }
 
+            if (activeCanvas == targetCanvas) 
+            {
+                return;
+            }
+
             StopCoroutine("EnableRequestedCanvas");
-            StartCoroutine("EnableRequestedCanvas", canvasType);
+            StartCoroutine("EnableRequestedCanvas", targetCanvas);
         }
 
         private IEnumerator EnableRequestedCanvas(LB_UIPanel targetCanvas)
@@ -106,22 +107,6 @@ namespace LB.SuperUI.BaseComponents
             activeCanvas = targetCanvas;
             activeCanvas.Activate();
         }
-
-        public void Register(Helpers.Observer.IObserver<UIStateChangedEventArgs> observer)
-        {
-            UIStateChanged += observer.Notify;
-        }
-
-        public void UnRegister(Helpers.Observer.IObserver<UIStateChangedEventArgs> observer)
-        {
-            UIStateChanged -= observer.Notify;
-        }
-
-        public void AddEvent(UIStateChangedEventArgs eventArgs)
-        {
-            UIStateChanged?.Invoke(this, eventArgs);
-        }
     }
-
 }
 

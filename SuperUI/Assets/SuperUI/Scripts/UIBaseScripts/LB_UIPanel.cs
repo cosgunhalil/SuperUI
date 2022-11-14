@@ -1,7 +1,6 @@
 ﻿namespace LB.SuperUI.BaseComponents 
 {
     using LB.SuperUI.Helpers.Observer;
-    using System;
     using System.Collections;
     using UnityEngine;
     using UnityEngine.UI;
@@ -18,17 +17,10 @@
 
         protected const float animationTime = .5f;
 
-        protected ISubject<UIStateChangedEventArgs> uiManager;
-
-        protected abstract void RegisterEvents();
-        protected abstract void UnRegisterEvents();
+        protected virtual void RegisterEvents() { }
+        protected virtual void UnRegisterEvents() { }
 
         public abstract void Setup();
-
-        public void InjectUIManagerDependency(ISubject<UIStateChangedEventArgs> uiManager) 
-        {
-            this.uiManager = uiManager;
-        }
 
         public override void PreInit()
         {

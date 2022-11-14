@@ -8,6 +8,7 @@ namespace LB.SuperUI.Sample
 
     public class CommonsPanel : LB_UIPanel
     {
+        //TODO: solve these dependencies. UI Panels must not know each other!..
         [SerializeField]
         private LB_Button mainMenuButton;
         [SerializeField]
@@ -47,21 +48,21 @@ namespace LB.SuperUI.Sample
 
         private void MainMenuButton_OnPointerDownEvent()
         {
-            uiManager.AddEvent(new UIStateChangedEventArgs() { State = UIState.MAIN_MENU });
+            //TODO: send MainMenuButton_OnPointerDownEvent
         }
         private void CharactersButton_OnPointerDownEvent()
         {
-            uiManager.AddEvent(new UIStateChangedEventArgs() { State = UIState.CHARACTERS });
+            //TODO: send CharactersButton_OnPointerDownEvent
         }
 
         private void MarketButton_OnPointerDownEvent()
         {
-            uiManager.AddEvent(new UIStateChangedEventArgs() { State = UIState.MARKET });
+            //TODO: send MarketButton_OnPointerDownEvent
         }
 
         private void EventsButton_OnPointerDownEvent()
         {
-            uiManager.AddEvent(new UIStateChangedEventArgs() { State = UIState.EVENTS });
+            //TODO: send EventsButton_OnPointerDownEvent
         }
 
         protected override void UnRegisterEvents()

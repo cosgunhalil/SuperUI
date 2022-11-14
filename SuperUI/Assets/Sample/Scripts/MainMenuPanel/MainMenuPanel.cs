@@ -1,11 +1,10 @@
-﻿
-namespace LB.SuperUI.Sample
+﻿namespace VoxelPixel.SampleApp.UI
 {
     using LB.SuperUI.BaseComponents;
     using LB.SuperUI.Helpers.Observer;
     using UnityEngine;
 
-    public class MainMenuPanel : LB_UIPanel, IObserver<UIStateChangedEventArgs>
+    public class MainMenuPanel : LB_UIPanel
     {
         [SerializeField]
         private LB_Button playButton;
@@ -15,27 +14,8 @@ namespace LB.SuperUI.Sample
             Debug.Log(gameObject.name + "Setup()");
         }
 
-        public override void LateInit()
-        {
-            uiManager.AddEvent(new UIStateChangedEventArgs() {State = UIState.MAIN_MENU});
-        }
-
-        public void Notify(object sender, UIStateChangedEventArgs e)
-        {
-            if (e.State == UIState.MAIN_MENU)
-            {
-                Activate();
-            }
-            else
-            {
-                Deactivate();
-            }
-        }
-
         protected override void RegisterEvents()
         {
-            uiManager.Register(this);
-
             if (playButton != null) 
             {
                 playButton.OnPointerDownEvent += PlayButton_OnPointerDownEvent;
@@ -49,8 +29,6 @@ namespace LB.SuperUI.Sample
 
         protected override void UnRegisterEvents()
         {
-            uiManager.UnRegister(this);
-
             if (playButton != null)
             {
                 playButton.OnPointerDownEvent -= PlayButton_OnPointerDownEvent;
